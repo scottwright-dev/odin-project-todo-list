@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do App</title>
+    <title>(todo)</title>
   </head>
   <body>
-    <h1>CAN YOU SEE ME????</h1>
-    <main id="todo-list-content"></main>
+    <header class="header">(todo)</header>
+    <main class="container">
+      <ul id="default-list">
+        <!-- The tasks will be dynamically added here -->
+      </ul>
+      <div class="render-content"></div>
+      <button class="add-task">add task</button>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>
