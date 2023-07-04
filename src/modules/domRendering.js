@@ -60,5 +60,11 @@ export function renderToDoTask() {
 
     // need to figure out adding to a list
 
+    const submitBtn = document.createElement('input');
+    submitBtn.type = 'submit';
+    submitBtn.value = 'add task';
+    submitBtn.classList.add('task-submit-btn');
+    form.appendChild(submitBtn);
+
     renderContent.appendChild(formContainer);
 }
