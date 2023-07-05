@@ -30,16 +30,19 @@ export function renderToDoTask() {
   const dueDateLabel = createInputLabel('Date:', 'date', 'task-dueDate-input');
   form.appendChild(dueDateLabel);
 
+  const priorityLabel = document.createElement('label');
+  priorityLabel.textContent = 'Priority:';
+  const prioritySelect = document.createElement('select');
+  prioritySelect.classList.add('task-priority-select');
+  priorityLabel.appendChild(prioritySelect);
+  form.appendChild(priorityLabel);
+
   function createPriorityOption(value, text) {
     const option = document.createElement('option');
     option.value = value;
     option.textContent = text;
     return option;
   }
-
-  const priorityLabel = createInputLabel('Priority:', 'select', 'task-priority-select');
-  const prioritySelect = priorityLabel.querySelector('select');
-  form.appendChild(priorityLabel);
 
   const lowPriority = createPriorityOption('low', 'Low - !');
   prioritySelect.appendChild(lowPriority);
