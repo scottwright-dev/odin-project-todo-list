@@ -1,5 +1,3 @@
-import createToDoTask from './createToDoTask';
-
 export function renderToDoTask() {
   const renderContent = document.querySelector('.render-content');
   renderContent.innerHTML = "";
