@@ -3,17 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="bundle.js" defer></script>
     <title>(todo)</title>
   </head>
   <body>
-    <header class="header">(todo)</header>
+    <header class="header">
+      <h1 class="header-text">todo</h1>
+    </header>
     <main class="container">
-      <ul id="default-list">
-        <!-- The tasks will be dynamically added here -->
-      </ul>
+      <div class="default-list-container">
+        <h2 class="list-title-text">default list</h2>
+        <ul id="default-list">
+          <!-- The tasks will be dynamically added here -->
+        </ul>
+      </div>
       <div class="render-content"></div>
-      <button class="add-task">add task</button>
+      <div class="add-task-button-container">
+        <button class="add-task-btn"></button>
+      </div>
     </main>
-    <script src="bundle.js"></script>
   </body>
 </html>
