@@ -1,4 +1,4 @@
-import { renderToDoTask } from './domRendering';
+import { renderToDoTask, renderTaskList } from './domRendering';
 import createToDoTask from './createToDoTask';
 import { createList } from './listManager';
 
@@ -18,7 +18,7 @@ export function addTaskToList() {
       const addTask = createToDoTask(title, description, dueDate, priority);
       taskList.addTaskToList(addTask);
 
-      console.log(taskList.taskList); 
+      renderTaskList(taskList.taskList);
 
       form.reset();
     });
