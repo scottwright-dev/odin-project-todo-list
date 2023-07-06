@@ -59,3 +59,15 @@ export function renderToDoTask() {
 
   renderContent.appendChild(formContainer);
 }
+
+export function renderTaskList(taskList) {
+    const defaultList = document.querySelector('#default-list');
+    defaultList.innerHTML = '';
+  
+    taskList.forEach((task) => {
+      const taskItem = document.createElement('li');
+      taskItem.textContent = task.task;
+      defaultList.appendChild(taskItem);
+    });
+  }
+  
