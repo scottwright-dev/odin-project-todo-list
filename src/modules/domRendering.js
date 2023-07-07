@@ -69,7 +69,12 @@ export function renderTaskList(taskList) {
     
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.classList = 'list-item';
+    checkbox.classList.add('list-item');
+    checkbox.checked = task.complete;
+
+    checkbox.addEventListener('click', () => {
+      task.complete = checkbox.checked;
+    });
 
     const textContent = document.createTextNode(task.task);
     
@@ -78,6 +83,4 @@ export function renderTaskList(taskList) {
     defaultList.appendChild(taskItem);
   });
 }
-
-
   
