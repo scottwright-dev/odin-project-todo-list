@@ -60,37 +60,49 @@ export function renderToDoTask() {
   renderContent.appendChild(formContainer);
 }
 
+function createCheckbox(task) {
+  const checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.classList.add('list-item-checkbox');
+  checkbox.checked = task.complete;
+
+  if (task.complete) {
+    checkbox.parentElement.style.textDecoration = 'line-through';
+  }
+
+  checkbox.addEventListener('click', () => {
+    task.complete = checkbox.checked;
+    if (checkbox.checked) {
+      checkbox.parentElement.style.textDecoration = 'line-through';
+    } else {
+      checkbox.parentElement.style.textDecoration = 'none';
+    }
+  });
+
+  return checkbox;
+}
+
+function createTaskItem(task) {
+  const taskItem = document.createElement('li');
+  taskItem.classList.add('list-item');
+
+  const checkbox = createCheckbox(task);
+  const textContent = document.createTextNode(task.task);
+
+  taskItem.appendChild(checkbox);
+  taskItem.appendChild(textContent);
+
+  return taskItem;
+}
+
 export function renderTaskList(taskList) {
   const defaultList = document.querySelector('#default-list');
   defaultList.innerHTML = '';
 
   taskList.forEach((task) => {
-    const taskItem = document.createElement('li');
-    taskItem.classList.add('list-item');
-
-    const checkbox = document.createElement('input');
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.classList.add('list-item-checkbox');
-    checkbox.checked = task.complete;
-
-    if (task.complete) {
-      taskItem.style.textDecoration = 'line-through';
-    }
-
-    checkbox.addEventListener('click', () => {
-      task.complete = checkbox.checked;
-      if (checkbox.checked) {
-        taskItem.style.textDecoration = 'line-through';
-      } else {
-        taskItem.style.textDecoration = 'none';
-      }
-    });
-
-    const textContent = document.createTextNode(task.task);
-
-    taskItem.appendChild(checkbox);
-    taskItem.appendChild(textContent);
+    const taskItem = createTaskItem(task);
     defaultList.appendChild(taskItem);
   });
 }
+
   
