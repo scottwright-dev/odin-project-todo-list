@@ -66,16 +66,13 @@ function createCheckbox(task) {
   checkbox.classList.add('list-item-checkbox');
   checkbox.checked = task.complete;
 
-  if (task.complete) {
-    checkbox.parentElement.style.textDecoration = 'line-through';
-  }
-
   checkbox.addEventListener('click', () => {
     task.complete = checkbox.checked;
+    const taskItem = checkbox.parentNode;
     if (checkbox.checked) {
-      checkbox.parentElement.style.textDecoration = 'line-through';
+      taskItem.style.textDecoration = 'line-through';
     } else {
-      checkbox.parentElement.style.textDecoration = 'none';
+      taskItem.style.textDecoration = 'none';
     }
   });
 
@@ -101,6 +98,11 @@ export function renderTaskList(taskList) {
 
   taskList.forEach((task) => {
     const taskItem = createTaskItem(task);
+
+    if (task.complete) {
+      taskItem.style.textDecoration = 'line-through';
+    }
+
     defaultList.appendChild(taskItem);
   });
 }
