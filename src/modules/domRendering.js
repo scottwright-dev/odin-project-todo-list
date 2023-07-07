@@ -61,13 +61,23 @@ export function renderToDoTask() {
 }
 
 export function renderTaskList(taskList) {
-    const defaultList = document.querySelector('#default-list');
-    defaultList.innerHTML = '';
-  
-    taskList.forEach((task) => {
-      const taskItem = document.createElement('li');
-      taskItem.textContent = task.task;
-      defaultList.appendChild(taskItem);
-    });
-  }
+  const defaultList = document.querySelector('#default-list');
+  defaultList.innerHTML = '';
+
+  taskList.forEach((task) => {
+    const taskItem = document.createElement('li');
+    
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.classList = 'list-item';
+
+    const textContent = document.createTextNode(task.task);
+    
+    taskItem.appendChild(checkbox);
+    taskItem.appendChild(textContent);
+    defaultList.appendChild(taskItem);
+  });
+}
+
+
   
