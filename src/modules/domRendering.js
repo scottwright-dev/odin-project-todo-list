@@ -66,18 +66,28 @@ export function renderTaskList(taskList) {
 
   taskList.forEach((task) => {
     const taskItem = document.createElement('li');
-    
+    taskItem.classList.add('list-item');
+
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.classList.add('list-item');
+    checkbox.classList.add('list-item-checkbox');
     checkbox.checked = task.complete;
+
+    if (task.complete) {
+      taskItem.style.textDecoration = 'line-through';
+    }
 
     checkbox.addEventListener('click', () => {
       task.complete = checkbox.checked;
+      if (checkbox.checked) {
+        taskItem.style.textDecoration = 'line-through';
+      } else {
+        taskItem.style.textDecoration = 'none';
+      }
     });
 
     const textContent = document.createTextNode(task.task);
-    
+
     taskItem.appendChild(checkbox);
     taskItem.appendChild(textContent);
     defaultList.appendChild(taskItem);
