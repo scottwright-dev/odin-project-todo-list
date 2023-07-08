@@ -1,3 +1,5 @@
+import { deleteTask } from './listManager';
+
 export function renderToDoTask() {
   const renderContent = document.querySelector('.render-content');
   renderContent.innerHTML = "";
@@ -92,12 +94,25 @@ function createTaskItem(task) {
   return taskItem;
 }
 
+function createDeleteBtn(taskItem, index, taskList) {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.classList.add('list-item-del-btn');
+
+  deleteBtn.addEventListener('click', () => {
+    deleteTask(index, taskList, renderTaskList);
+  });
+
+  taskItem.appendChild(deleteBtn);
+}
+
 export function renderTaskList(taskList) {
   const defaultList = document.querySelector('#default-list');
   defaultList.innerHTML = '';
 
-  taskList.forEach((task) => {
+  taskList.forEach((task, index) => {
     const taskItem = createTaskItem(task);
+    createDeleteBtn(taskItem, index, taskList);
 
     if (task.complete) {
       taskItem.style.textDecoration = 'line-through';
