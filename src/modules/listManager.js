@@ -9,3 +9,8 @@ export function createList() {
       addTaskToList
     };
   }
+
+  export function deleteTask(index, taskList, renderTaskList) {
+    taskList.splice(index, 1);
+    renderTaskList(taskList);
+  }
