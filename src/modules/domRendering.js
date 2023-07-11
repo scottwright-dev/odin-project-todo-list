@@ -86,13 +86,27 @@ function createTaskItem(task) {
   taskItem.classList.add('list-item');
 
   const checkbox = createCheckbox(task);
-  const textContent = document.createTextNode(task.task);
+  const title = document.createElement('span');
+  title.textContent = task.task;
+
+  const description = document.createElement('p');
+  description.textContent = task.description;
+
+  const dueDate = document.createElement('p');
+  dueDate.textContent = task.dueDate;
+
+  const priority = document.createElement('p');
+  priority.textContent = task.priority;
 
   taskItem.appendChild(checkbox);
-  taskItem.appendChild(textContent);
+  taskItem.appendChild(title);
+  taskItem.appendChild(description);
+  taskItem.appendChild(dueDate);
+  taskItem.appendChild(priority);
 
   return taskItem;
 }
+
 
 function createDeleteBtn(taskItem, index, taskList) {
   const deleteBtn = document.createElement('button');
