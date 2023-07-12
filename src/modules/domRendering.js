@@ -70,20 +70,24 @@ function createCheckbox(task) {
 
   checkbox.addEventListener('click', () => {
     task.complete = checkbox.checked;
-    const taskItem = checkbox.parentNode;
+    const listItem = checkbox.parentNode;
     if (checkbox.checked) {
-      taskItem.style.textDecoration = 'line-through';
+      listItem.style.textDecoration = 'line-through';
     } else {
-      taskItem.style.textDecoration = 'none';
+      listItem.style.textDecoration = 'none';
     }
   });
 
   return checkbox;
 }
 
-function createTaskItem(task) {
-  const taskItem = document.createElement('li');
-  taskItem.classList.add('list-item');
+function createListItem(task) {
+
+  const container = document.createElement('div');
+  container.classList.add('list-item-container');
+
+  const listItem = document.createElement('li');
+  listItem.classList.add('list-item');
 
   const checkbox = createCheckbox(task);
   const title = document.createElement('span');
@@ -98,13 +102,15 @@ function createTaskItem(task) {
   const priority = document.createElement('p');
   priority.textContent = task.priority;
 
-  taskItem.appendChild(checkbox);
-  taskItem.appendChild(title);
-  taskItem.appendChild(description);
-  taskItem.appendChild(dueDate);
-  taskItem.appendChild(priority);
+  listItem.appendChild(checkbox);
+  listItem.appendChild(title);
+  listItem.appendChild(description);
+  listItem.appendChild(dueDate);
+  listItem.appendChild(priority);
 
-  return taskItem;
+  container.appendChild(listItem);
+
+  return listItem;
 }
 
 
@@ -125,7 +131,7 @@ export function renderTaskList(taskList) {
   defaultList.innerHTML = '';
 
   taskList.forEach((task, index) => {
-    const taskItem = createTaskItem(task);
+    const taskItem = createListItem(task);
     createDeleteBtn(taskItem, index, taskList);
 
     if (task.complete) {
