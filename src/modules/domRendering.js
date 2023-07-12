@@ -115,9 +115,9 @@ function createListItem(task) {
 
 
 function createDeleteBtn(taskItem, index, taskList) {
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Delete';
+  const deleteBtn = document.createElement('div');
   deleteBtn.classList.add('list-item-del-btn');
+  deleteBtn.setAttribute('aria-label', 'Delete task');
 
   deleteBtn.addEventListener('click', () => {
     deleteTask(index, taskList, renderTaskList);
