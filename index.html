@@ -10,21 +10,21 @@
     <header class="header">
       <h1 class="header-text">todo</h1>
     </header>
-    <section class="list-manager-container">
+    <section class="list-manager-container" aria-label="List Manager">
       <h2 class="list-manager-title">List Manager</h2>
-      <button class="create-new-list-btn">Create List</button>
-       <ul id="list-manager-list">
+      <button class="create-new-list-btn" aria-label="Create List">Create List</button>
+       <ul id="list-manager-list" role="list">
        </ul>
     </section>
     <main class="container">
       <div class="default-list-container">
         <h2 class="list-title-text">default list</h2>
-        <ul id="default-list">
+        <ul id="default-list" role="list">
         </ul>
       </div>
       <div class="render-content"></div>
       <div class="add-task-button-container">
-        <button class="add-task-btn"></button>
+        <button class="add-task-btn" aria-label="Add Task"></button>
       </div>
     </main>
   </body>
