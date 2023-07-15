@@ -1,4 +1,4 @@
-import { renderToDoTask, renderTaskList } from './domRendering';
+import { renderToDoTask, renderTaskList, renderListInput } from './domRendering';
 import createToDoTask from './createToDoTask';
 import { createList } from './listManager';
 
@@ -33,4 +33,13 @@ export function handleAddTaskButtonClick() {
       addTaskToList();
     });
   }
+
+  export function handleAddListButtonClick() {
+    const addListButton = document.querySelector('.create-new-list-btn');
+  
+    addListButton.addEventListener('click', () => {
+      renderListInput();
+    });
+  }
+  
   
