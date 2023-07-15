@@ -90,6 +90,7 @@ function createListItem(task) {
   listItem.classList.add('list-item');
 
   const checkbox = createCheckbox(task);
+  
   const title = document.createElement('span');
   title.textContent = task.task;
 
@@ -141,5 +142,46 @@ export function renderTaskList(taskList) {
     defaultList.appendChild(taskItem);
   });
 }
+
+export function renderListInput() {
+  const listInputContainer = document.querySelector('#list-manager-list');
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Enter list name';
+  input.classList.add('list-name-input');
+
+  const addListBtn = document.createElement('button');
+  addListBtn.textContent = 'Add List';
+
+  const inputContainer = document.createElement('div');
+  inputContainer.classList.add('input-container');
+  inputContainer.appendChild(input);
+  inputContainer.appendChild(addListBtn);
+
+  listInputContainer.innerHTML = '';
+  listInputContainer.appendChild(inputContainer);
+
+  addListBtn.addEventListener('click', () => {
+    const listName = input.value.trim();
+    if (listName) {
+      addListToListManager(listName);
+    }
+  });
+}
+
+function addListToListManager(listName) {
+  const listManagerList = document.querySelector('#list-manager-list');
+  const listItem = document.createElement('li');
+  listItem.textContent = listName;
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+
+  listItem.appendChild(deleteBtn);
+
+  listManagerList.appendChild(listItem);
+}
+
 
   
