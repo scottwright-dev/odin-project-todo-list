@@ -178,6 +178,10 @@ function addListToListManager(listName) {
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = 'Delete';
 
+  deleteBtn.addEventListener('click', () => {
+    listItem.remove();
+  });
+
   listItem.appendChild(deleteBtn);
 
   listManagerList.appendChild(listItem);
