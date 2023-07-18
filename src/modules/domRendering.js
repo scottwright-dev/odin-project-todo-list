@@ -1,5 +1,14 @@
 import { deleteTask } from './listManager';
 
+function createListSelect() {
+  const label = document.createElement('label');
+  label.textContent = 'List:';
+  const select = document.createElement('select');
+  select.classList.add('task-list-select');
+  label.appendChild(select);
+  return label;
+}
+
 export function renderToDoTask() {
   const renderContent = document.querySelector('.render-content');
   renderContent.innerHTML = "";
@@ -53,6 +62,9 @@ export function renderToDoTask() {
   const highPriority = createPriorityOption('high', 'High - !!!');
   prioritySelect.appendChild(highPriority);
 
+  const listLabel = createListSelect();
+  form.appendChild(listLabel);
+
   const submitBtn = document.createElement('input');
   submitBtn.type = 'submit';
   submitBtn.value = 'add task';
@@ -60,6 +72,7 @@ export function renderToDoTask() {
   form.appendChild(submitBtn);
 
   renderContent.appendChild(formContainer);
+
 }
 
 function createCheckbox(task) {
@@ -153,6 +166,7 @@ export function renderListInput() {
 
   const addListBtn = document.createElement('button');
   addListBtn.textContent = 'Add List';
+  addListBtn.classList.add('add-list-btn')
 
   const inputContainer = document.createElement('div');
   inputContainer.classList.add('input-container');
@@ -175,8 +189,8 @@ function addListToListManager(listName) {
   const listItem = document.createElement('li');
   listItem.textContent = listName;
 
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Delete';
+  const deleteBtn = document.createElement('div');
+  deleteBtn.classList.add('list-delete-btn');
 
   deleteBtn.addEventListener('click', () => {
     listItem.remove();
@@ -186,6 +200,3 @@ function addListToListManager(listName) {
 
   listManagerList.appendChild(listItem);
 }
-
-
-  
