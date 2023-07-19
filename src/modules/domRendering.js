@@ -132,14 +132,12 @@ function createListItem(task) {
   return listItem;
 }
 
-function createDeleteBtn(taskItem, index, taskList) {
+function createDeleteBtn(taskItem, onDelete) {
   const deleteBtn = document.createElement('div');
   deleteBtn.classList.add('list-item-del-btn');
   deleteBtn.setAttribute('aria-label', 'Delete task');
 
-  deleteBtn.addEventListener('click', () => {
-    deleteTask(index, taskList, renderTaskList);
-  });
+  deleteBtn.addEventListener('click', onDelete);
 
   taskItem.appendChild(deleteBtn);
 }
@@ -150,7 +148,8 @@ export function renderTaskList(taskList) {
 
   taskList.forEach((task, index) => {
     const taskItem = createListItem(task);
-    createDeleteBtn(taskItem, index, taskList);
+
+    createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
 
     if (task.complete) {
       taskItem.style.textDecoration = 'line-through';
@@ -159,6 +158,7 @@ export function renderTaskList(taskList) {
     defaultList.appendChild(taskItem);
   });
 }
+
 
 // LIST MANAGER RENDERING // 
 
