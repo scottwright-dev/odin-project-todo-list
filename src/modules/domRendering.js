@@ -1,5 +1,24 @@
 import { deleteTask } from './listManager';
 
+// CREATE TO-DO FORM ELEMENTS //
+
+function createInputLabel(text, inputType, inputClass) {
+  const label = document.createElement('label');
+  label.textContent = text;
+  const input = document.createElement('input');
+  input.type = inputType;
+  input.classList.add(inputClass);
+  label.appendChild(input);
+  return label;
+}
+
+function createPriorityOption(value, text) {
+  const option = document.createElement('option');
+  option.value = value;
+  option.textContent = text;
+  return option;
+}
+
 function createListSelect() {
   const label = document.createElement('label');
   label.textContent = 'List:';
@@ -9,26 +28,9 @@ function createListSelect() {
   return label;
 }
 
-export function renderToDoTask() {
-  const renderContent = document.querySelector('.render-content');
-  renderContent.innerHTML = "";
-
-  const formContainer = document.createElement('div');
-  formContainer.classList.add('todo-form-container');
-
+function createToDoForm() {
   const form = document.createElement('form');
   form.classList.add('todo-form');
-  formContainer.appendChild(form);
-
-  function createInputLabel(text, inputType, inputClass) {
-    const label = document.createElement('label');
-    label.textContent = text;
-    const input = document.createElement('input');
-    input.type = inputType;
-    input.classList.add(inputClass);
-    label.appendChild(input);
-    return label;
-  }
 
   const titleLabel = createInputLabel('Title:', 'text', 'task-title-input');
   form.appendChild(titleLabel);
@@ -45,13 +47,6 @@ export function renderToDoTask() {
   prioritySelect.classList.add('task-priority-select');
   priorityLabel.appendChild(prioritySelect);
   form.appendChild(priorityLabel);
-
-  function createPriorityOption(value, text) {
-    const option = document.createElement('option');
-    option.value = value;
-    option.textContent = text;
-    return option;
-  }
 
   const lowPriority = createPriorityOption('low', 'Low - !');
   prioritySelect.appendChild(lowPriority);
@@ -71,8 +66,22 @@ export function renderToDoTask() {
   submitBtn.classList.add('task-submit-btn');
   form.appendChild(submitBtn);
 
-  renderContent.appendChild(formContainer);
+  return form;
+}
 
+// TO-DO TASK FORM RENDERING // 
+
+export function renderToDoTask() {
+  const renderContent = document.querySelector('.render-content');
+  renderContent.innerHTML = "";
+
+  const formContainer = document.createElement('div');
+  formContainer.classList.add('todo-form-container');
+
+  const toDoForm = createToDoForm();
+  formContainer.appendChild(toDoForm);
+
+  renderContent.appendChild(formContainer);
 }
 
 function createCheckbox(task) {
@@ -94,11 +103,9 @@ function createCheckbox(task) {
   return checkbox;
 }
 
+// DEFAULT LIST RENDERING //
+
 function createListItem(task) {
-
-  const container = document.createElement('div');
-  container.classList.add('list-item-container');
-
   const listItem = document.createElement('li');
   listItem.classList.add('list-item');
 
@@ -122,11 +129,8 @@ function createListItem(task) {
   listItem.appendChild(dueDate);
   listItem.appendChild(priority);
 
-  container.appendChild(listItem);
-
   return listItem;
 }
-
 
 function createDeleteBtn(taskItem, index, taskList) {
   const deleteBtn = document.createElement('div');
@@ -156,33 +160,7 @@ export function renderTaskList(taskList) {
   });
 }
 
-export function renderListInput() {
-  const listInputContainer = document.querySelector('#list-manager-list');
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.placeholder = 'Enter list name';
-  input.classList.add('list-name-input');
-
-  const addListBtn = document.createElement('button');
-  addListBtn.textContent = 'Add List';
-  addListBtn.classList.add('add-list-btn')
-
-  const inputContainer = document.createElement('div');
-  inputContainer.classList.add('input-container');
-  inputContainer.appendChild(input);
-  inputContainer.appendChild(addListBtn);
-
-  listInputContainer.innerHTML = '';
-  listInputContainer.appendChild(inputContainer);
-
-  addListBtn.addEventListener('click', () => {
-    const listName = input.value.trim();
-    if (listName) {
-      addListToListManager(listName);
-    }
-  });
-}
+// LIST MANAGER RENDERING // 
 
 function addListToListManager(listName) {
   const listManagerList = document.querySelector('#list-manager-list');
@@ -199,4 +177,32 @@ function addListToListManager(listName) {
   listItem.appendChild(deleteBtn);
 
   listManagerList.appendChild(listItem);
+}
+
+export function renderListInput() {
+  const listInputContainer = document.querySelector('#list-manager-list');
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Enter list name';
+  input.classList.add('list-name-input');
+
+  const addListBtn = document.createElement('button');
+  addListBtn.textContent = 'Add List';
+  addListBtn.classList.add('add-list-btn');
+
+  const inputContainer = document.createElement('div');
+  inputContainer.classList.add('input-container');
+  inputContainer.appendChild(input);
+  inputContainer.appendChild(addListBtn);
+
+  listInputContainer.innerHTML = '';
+  listInputContainer.appendChild(inputContainer);
+
+  addListBtn.addEventListener('click', () => {
+    const listName = input.value.trim();
+    if (listName) {
+      addListToListManager(listName);
+    }
+  });
 }
