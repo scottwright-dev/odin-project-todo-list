@@ -1,0 +1,249 @@
+/* RESETS & ROOT STYLES */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --accent-color: #3484F5;
+  --background-color: #1B1C1E;
+  --background-shade: #3A3C40;
+  --background-hover: #575A60;
+  --border: 3px solid var(--text-color);
+  --border-radius: 6px;
+  --filter: invert(44%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(99%);
+  --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-size: 16px;
+  --font-weight: 400;
+  --line-height: 1.5;
+  --padding: 1.5rem;
+  --text-color: #F3F3F3;
+  --transition: transform 0.2s ease-in-out;
+}
+
+/* LAYOUT */
+
+.container {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header header"
+    "list-manager-container default-list-container";
+  min-height: 90vh;
+  background: var(--background-color);
+  color: var(--text-color);
+  line-height: var(--line-height);
+  font-family: var(--font-family);
+}
+
+.default-list-container {
+  grid-area: default-list-container;
+}
+
+.list-manager-container {
+  grid-area: list-manager-container;
+}
+
+/* HEADER */
+
+.header {
+  grid-area: header;
+}
+
+.header-text {
+  font-size: clamp(1.4rem, 8vw, 2.75rem);
+  text-align: right;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+}
+
+.header-text::before,
+.header-text::after {
+  color: var(--accent-color);
+}
+
+.header-text::before {
+  content: "(";
+}
+
+.header-text::after {
+  content: ")";
+}
+
+/* BUTTONS */
+
+.add-task-btn,
+.create-new-list-btn {
+  background-image: url('./assets/icons/add-circle-outline.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  cursor: pointer;
+  width: 8rem;
+  height: 2rem;
+  border: none;
+  background-color: transparent;
+  padding-left: 1rem;
+  transition: var(--transition);
+  filter: var(--filter);
+}
+
+.add-task-btn:hover,
+.create-new-list-btn:hover,
+.task-submit-btn:hover,
+.add-list-btn:hover {
+  cursor: pointer;
+}
+
+.create-new-list-btn {
+  filter: invert(94%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(200%);
+}
+
+/* TASK FORM */
+
+.todo-form {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--background-hover);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+input:focus:not(.list-item-checkbox),
+input:hover {
+  outline: 2px solid var(--accent-color);
+  background-color: var(--background-hover);
+}
+
+.task-title-input,
+.task-description-input,
+.task-dueDate-input,
+.task-submit-btn,
+.add-list-btn {
+  appearance: none;
+  background-color: var(--background-shade);
+  border: none;
+  border-radius: var(--border-radius);
+  color: inherit;
+  color-scheme: dark;
+  height: 2rem;
+  margin: 0.5rem 1rem;
+}
+
+.task-submit-btn,
+.add-list-btn {
+  background-color: var(--accent-color);
+  text-align: center;
+  padding: 0 2em;
+}
+
+/* DEFAULT LIST */
+
+.list-item {
+  display: grid;
+  border-bottom: 2px solid var(--background-hover);
+  padding-bottom: 1rem;
+}
+
+.list-title-text {
+  color: var(--accent-color);
+}
+
+.list-item-checkbox {
+  background-color: var(--background-shade);
+  color: inherit;
+  margin: 0 1rem;
+  border: 50%;
+}
+
+.completed-task-text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.list-item-del-btn,
+.list-delete-btn {
+  filter: var(--filter);
+}
+
+.list-item-del-btn::before,
+.list-delete-btn::before {
+  content: "";
+  cursor: pointer;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url(/src/assets/icons/trash-outline.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+/* LIST MANAGER */
+
+.list-manager-container {
+  background-color: var(--background-shade);
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  padding-left: var(--padding);
+  margin-right: 1rem;
+}
+
+.list-manager-title {
+  text-align: left;
+}
+
+.list-name-input {
+  appearance: none;
+  background-color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--background-color);
+  height: 2rem;
+  margin: 0.5rem 1rem;
+}
