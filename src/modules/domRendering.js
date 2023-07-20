@@ -210,11 +210,6 @@ export function renderListInput() {
   listInputContainer.innerHTML = '';
   listInputContainer.appendChild(inputContainer);
 
-  const allLists = getAllLists();
-  allLists.forEach(list => {
-    addListToListManager(list.name);
-  });
-
   addListBtn.addEventListener('click', () => {
     const listName = input.value.trim();
     if (listName) {
