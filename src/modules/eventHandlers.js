@@ -27,6 +27,11 @@ export function addTaskToList() {
   }
 }
 
+export function deleteTask(index, taskList, renderFunc) {
+  taskList.splice(index, 1);
+  renderFunc(taskList);
+}
+ 
 export function handleAddTaskButtonClick() {
     const addTaskButton = document.querySelector(".add-task-btn");
   
