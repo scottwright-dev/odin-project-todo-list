@@ -1,6 +1,4 @@
 import "./style.css";
-import { handleAddTaskButtonClick, addTaskToList, handleAddListButtonClick } from "./modules/eventHandlers";
+import { initialise } from "./modules/eventHandlers";
 
-handleAddTaskButtonClick();
-addTaskToList();
-handleAddListButtonClick();
+initialise();
