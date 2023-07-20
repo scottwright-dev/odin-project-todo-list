@@ -1,4 +1,4 @@
-import { deleteTask } from './listManager';
+import { createList, getAllLists } from './listManager';
 
 // CREATE TO-DO FORM ELEMENTS //
 
@@ -25,6 +25,15 @@ function createListSelect() {
   const select = document.createElement('select');
   select.classList.add('task-list-select');
   label.appendChild(select);
+
+  const allLists = getAllLists();
+  allLists.forEach(list => {
+    const option = document.createElement('option');
+    option.value = list.name;
+    option.textContent = list.name;
+    select.appendChild(option);
+  });
+
   return label;
 }
 
@@ -177,6 +186,8 @@ function addListToListManager(listName) {
   listItem.appendChild(deleteBtn);
 
   listManagerList.appendChild(listItem);
+
+  createList(listName); 
 }
 
 export function renderListInput() {
@@ -198,6 +209,11 @@ export function renderListInput() {
 
   listInputContainer.innerHTML = '';
   listInputContainer.appendChild(inputContainer);
+
+  const allLists = getAllLists();
+  allLists.forEach(list => {
+    addListToListManager(list.name);
+  });
 
   addListBtn.addEventListener('click', () => {
     const listName = input.value.trim();
