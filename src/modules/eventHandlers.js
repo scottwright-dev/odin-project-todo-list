@@ -1,10 +1,9 @@
 import { renderToDoTask, renderTaskList, renderListInput } from './domRendering';
 import createToDoTask from './createToDoTask';
-import { createList } from './listManager';
+import { getAllLists } from './listManager';
 
 export function addTaskToList() {
   const form = document.querySelector('.todo-form');
-  const taskList = createList();
 
   if (form) {
     form.addEventListener('submit', (event) => {
@@ -14,11 +13,14 @@ export function addTaskToList() {
       const description = document.querySelector('.task-description-input').value;
       const dueDate = document.querySelector('.task-dueDate-input').value;
       const priority = document.querySelector('.task-priority-select').value;
+      const listName = document.querySelector('.task-list-select').value;
 
       const addTask = createToDoTask(title, description, dueDate, priority);
-      taskList.addTaskToList(addTask);
 
-      renderTaskList(taskList.taskList);
+      const selectedList = getAllLists().find(list => list.name === listName);
+
+      selectedList?.tasks.push(addTask);
+      renderTaskList(selectedList?.tasks);
 
       form.reset();
     });
@@ -41,5 +43,9 @@ export function handleAddTaskButtonClick() {
       renderListInput();
     });
   }
-  
-  
+
+  export function initialise() {
+    handleAddTaskButtonClick();
+    handleAddListButtonClick();
+    renderListInput();
+  }
