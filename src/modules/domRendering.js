@@ -121,6 +121,11 @@ function createCheckbox(task) {
 
 // DEFAULT LIST RENDERING //
 
+function updateListTitle(listName) {
+  const listTitle = document.querySelector('.list-title-text');
+  listTitle.textContent = listName;
+}
+
 function createListItem(task) {
   const listItem = document.createElement('li');
   listItem.classList.add('list-item');
@@ -203,6 +208,7 @@ function addListToListManager(listName) {
   listItem.addEventListener('click', () => {
     const selectedList = allLists.find(list => list.name === listName);
     renderTaskList(selectedList.tasks);
+    updateListTitle(listName);
   });
 }
 
