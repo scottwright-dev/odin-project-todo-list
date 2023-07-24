@@ -1,4 +1,4 @@
-const allLists = [
+export const allLists = [
   {
     name: 'default list',
     tasks: []
