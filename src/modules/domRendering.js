@@ -186,7 +186,7 @@ export function renderTaskList(taskList) {
 
 // LIST MANAGER RENDERING // 
 
-function addListToListManager(listName) {
+export function addListToListManager(listName) {
   const listManagerList = document.querySelector('#list-manager-list');
   const listItem = document.createElement('li');
   listItem.textContent = listName;
@@ -201,7 +201,11 @@ function addListToListManager(listName) {
 
   listItem.appendChild(deleteBtn);
 
-  listManagerList.appendChild(listItem);
+  if (listName === 'default list') {
+    listManagerList.insertBefore(listItem, listManagerList.firstChild);
+  } else {
+    listManagerList.appendChild(listItem);
+  }
 
   createList(listName);
 
