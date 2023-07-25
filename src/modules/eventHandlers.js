@@ -1,4 +1,4 @@
-import { renderToDoTask, renderTaskList, renderListInput } from './domRendering';
+import { renderToDoTask, renderTaskList, renderListInput, addListToListManager } from './domRendering';
 import createToDoTask from './createToDoTask';
 import { getAllLists } from './listManager';
 
@@ -53,4 +53,5 @@ export function handleAddTaskButtonClick() {
     handleAddTaskButtonClick();
     handleAddListButtonClick();
     renderListInput();
+    addListToListManager('default list');
   }
