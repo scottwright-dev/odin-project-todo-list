@@ -6,6 +6,9 @@ export const allLists = [
 ];
 
 export function createList(listName) {
+  if (listName === 'default list') {
+    return allLists[0];
+  }
   const taskList = [];
   const listObj = {
     name: listName,
