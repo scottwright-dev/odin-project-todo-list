@@ -1,5 +1,5 @@
 import { createList, getAllLists, allLists } from './listManager';
-import { deleteTask } from './eventHandlers';
+import { deleteTask, addTaskToList } from './eventHandlers';
 
 // CREATE TO-DO FORM ELEMENTS //
 
@@ -119,6 +119,60 @@ function createCheckbox(task) {
   return checkbox;
 }
 
+// EXPAND TO-DO TASK //
+
+function expandToDoDetails(task) {
+  const renderContent = document.querySelector('.render-content');
+  renderContent.innerHTML = '';
+
+  const formContainer = document.createElement('div');
+  formContainer.classList.add('todo-form-container');
+
+  const toDoForm = createToDoForm();
+  formContainer.appendChild(toDoForm);
+
+  const titleInput = formContainer.querySelector('.task-title-input');
+  const descriptionInput = formContainer.querySelector('.task-description-input');
+  const dueDateInput = formContainer.querySelector('.task-dueDate-input');
+  const prioritySelect = formContainer.querySelector('.task-priority-select');
+  const listSelect = formContainer.querySelector('.task-list-select');
+
+  titleInput.value = task.task;
+  descriptionInput.value = task.description;
+  dueDateInput.value = task.dueDate;
+  prioritySelect.value = task.priority;
+  listSelect.value = task.list;
+
+  const submitBtn = formContainer.querySelector('.task-submit-btn');
+  submitBtn.value = 'update task';
+  submitBtn.removeEventListener('click', addTaskToList);
+  submitBtn.addEventListener('click', () => updateTaskDetails(task));
+
+  renderContent.appendChild(formContainer);
+}
+
+// UPDATE TASK //
+
+function updateTaskDetails(task) {
+  const formContainer = document.querySelector('.todo-form-container');
+  debugger;
+
+  const titleInput = formContainer.querySelector('.task-title-input');
+  const descriptionInput = formContainer.querySelector('.task-description-input');
+  const dueDateInput = formContainer.querySelector('.task-dueDate-input');
+  const prioritySelect = formContainer.querySelector('.task-priority-select');
+  const listSelect = formContainer.querySelector('.task-list-select');
+
+  task.task = titleInput.value;
+  task.description = descriptionInput.value;
+  task.dueDate = dueDateInput.value;
+  task.priority = prioritySelect.value;
+  task.list = listSelect.value;
+
+  // Re-render the task list
+  renderTaskList(allLists.flatMap(list => list.tasks));
+}
+
 // DEFAULT LIST RENDERING //
 
 function updateListTitle(listName) {
@@ -153,6 +207,10 @@ function createListItem(task) {
   listItem.appendChild(description);
   listItem.appendChild(dueDate);
   listItem.appendChild(priority);
+
+  listItem.addEventListener('click', () => {
+    expandToDoDetails(task);
+  });
 
   return listItem;
 }
