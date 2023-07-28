@@ -1,4 +1,4 @@
-import { renderToDoTask, renderTaskList, renderListInput, addListToListManager } from './domRendering';
+import { renderTaskList, renderListInput, addListToListManager, openDialog, updateTaskDetails } from './domRendering';
 import createToDoTask from './createToDoTask';
 import { getAllLists } from './listManager';
 
@@ -33,13 +33,37 @@ export function deleteTask(index, taskList, renderFunc) {
 }
  
 export function handleAddTaskButtonClick() {
-    const addTaskButton = document.querySelector(".add-task-btn");
-  
-    addTaskButton.addEventListener("click", () => {
-      renderToDoTask();
+  const addTaskButton = document.querySelector(".add-task-btn");
+
+  addTaskButton.addEventListener("click", () => {
+    openDialog();
+
+    const form = document.querySelector('.todo-form');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
       addTaskToList();
+      const dialog = document.querySelector('.todo-dialog');
+      if (dialog) {
+        dialog.close();
+      }
     });
-  }
+  });
+}
+
+export function handleEditButtonClick(task) {
+  openDialog();
+
+  const form = document.querySelector('.todo-form');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    updateTaskDetails(task);
+    const dialog = document.querySelector('.todo-dialog');
+    if (dialog) {
+      dialog.close();
+    }
+  });
+}
 
   export function handleAddListButtonClick() {
     const addListButton = document.querySelector('.create-new-list-btn');
