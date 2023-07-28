@@ -1,3 +1,4 @@
+import createToDoTask from './createToDoTask';
 import { createList, getAllLists, allLists } from './listManager';
 import { deleteTask, addTaskToList } from './eventHandlers';
 
@@ -78,7 +79,53 @@ function createToDoForm() {
   submitBtn.classList.add('task-submit-btn');
   form.appendChild(submitBtn);
 
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const dialog = document.querySelector('.todo-dialog');
+    if (dialog) {
+      dialog.close();
+    }
+  });
+
   return form;
+}
+
+// DIALOG MODAL //
+
+export function openDialog() {
+  const dialog = document.createElement('dialog');
+  dialog.classList.add('todo-dialog');
+
+  const toDoForm = createToDoForm();
+
+  toDoForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const title = toDoForm.querySelector('.task-title-input').value;
+    const description = toDoForm.querySelector('.task-description-input').value;
+    const dueDate = toDoForm.querySelector('.task-dueDate-input').value;
+    const priority = toDoForm.querySelector('.task-priority-select').value;
+    const listName = toDoForm.querySelector('.task-list-select').value;
+
+    const addTask = createToDoTask(title, description, dueDate, priority);
+
+    const selectedList = getAllLists().find(list => list.name === listName);
+
+    selectedList?.tasks.push(addTask);
+    renderTaskList(selectedList?.tasks);
+
+    dialog.close();
+  });
+
+  dialog.appendChild(toDoForm);
+  document.body.appendChild(dialog);
+
+  dialog.showModal();
+
+  dialog.addEventListener('close', () => {
+    document.body.removeChild(dialog);
+  });
 }
 
 // TO-DO TASK FORM RENDERING // 
@@ -121,9 +168,10 @@ function createCheckbox(task) {
 
 // EXPAND TO-DO TASK //
 
-function expandToDoDetails(task) {
-  const renderContent = document.querySelector('.render-content');
-  renderContent.innerHTML = '';
+function openDetailsDialog(task) {
+  openDialog();
+
+  const dialog = document.querySelector('.todo-dialog');
 
   const formContainer = document.createElement('div');
   formContainer.classList.add('todo-form-container');
@@ -148,14 +196,17 @@ function expandToDoDetails(task) {
   submitBtn.removeEventListener('click', addTaskToList);
   submitBtn.addEventListener('click', () => updateTaskDetails(task));
 
-  renderContent.appendChild(formContainer);
+  dialog.appendChild(formContainer);
+}
+
+function expandToDoDetails(task) {
+  openDetailsDialog(task); 
 }
 
 // UPDATE TASK //
 
-function updateTaskDetails(task) {
+export function updateTaskDetails(task) {
   const formContainer = document.querySelector('.todo-form-container');
-  debugger;
 
   const titleInput = formContainer.querySelector('.task-title-input');
   const descriptionInput = formContainer.querySelector('.task-description-input');
@@ -169,7 +220,6 @@ function updateTaskDetails(task) {
   task.priority = prioritySelect.value;
   task.list = listSelect.value;
 
-  // Re-render the task list
   renderTaskList(allLists.flatMap(list => list.tasks));
 }
 
