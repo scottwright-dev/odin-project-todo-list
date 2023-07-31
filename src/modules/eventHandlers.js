@@ -1,5 +1,5 @@
 import { renderTaskList, renderListInput, addListToListManager, openDialog, updateTaskDetails } from './domRendering';
-import createToDoTask from './createToDoTask';
+import { createToDoTask } from './createToDoTask';
 import { getAllLists } from './listManager';
 
 export function addTaskToList() {

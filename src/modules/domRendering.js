@@ -1,4 +1,4 @@
-import createToDoTask from './createToDoTask';
+import { createToDoTask } from './createToDoTask';
 import { createList, getAllLists, allLists } from './listManager';
 import { deleteTask, addTaskToList } from './eventHandlers';
 
