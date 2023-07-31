@@ -223,7 +223,15 @@ export function updateTaskDetails(task) {
   task.priority = prioritySelect.value;
   task.list = listSelect.value;
 
-  renderTaskList(allLists.flatMap(list => list.tasks));
+  const allTasks = [];
+  
+  allLists.forEach(list => {
+    list.tasks.forEach(task => {
+      allTasks.push(task);
+    });
+  });
+
+  renderTaskList(allTasks);
 }
 
 // DEFAULT LIST RENDERING //
