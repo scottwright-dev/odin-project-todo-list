@@ -4,12 +4,15 @@ import { deleteTask, addTaskToList } from './eventHandlers';
 
 // CREATE TO-DO FORM ELEMENTS //
 
-function createInputLabel(text, inputType, inputClass) {
+function createInputLabel(text, inputType, inputClass, isRequired = false) {
   const label = document.createElement('label');
   label.textContent = text;
   const input = document.createElement('input');
   input.type = inputType;
   input.classList.add(inputClass);
+  if (isRequired) {
+    input.setAttribute('required', '')
+  }
   label.appendChild(input);
   return label;
 }
@@ -45,7 +48,7 @@ function createToDoForm() {
   const form = document.createElement('form');
   form.classList.add('todo-form');
 
-  const titleLabel = createInputLabel('Title:', 'text', 'task-title-input');
+  const titleLabel = createInputLabel('Title:', 'text', 'task-title-input', true);
   form.appendChild(titleLabel);
 
   const descriptionLabel = createInputLabel('Description:', 'text', 'task-description-input');
