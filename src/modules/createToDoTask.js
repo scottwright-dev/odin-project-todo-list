@@ -1,11 +1,8 @@
 import { format } from 'date-fns';
 
-  function formatDate(date) {
-    const formattedDate = format(new Date(date), 'dd/MM/yyyy');
-    return formattedDate;
-  }
+const formatDate = (date) => format(new Date(date), 'dd/MM/yyyy');
 
-export default function createToDoTask(task, description, dueDate, priority, list) {
+export const createToDoTask = (task, description, dueDate, priority, list) => {
   if (!task) {
     alert('Task cannot be empty, please add task name');
   }
@@ -20,4 +17,4 @@ export default function createToDoTask(task, description, dueDate, priority, lis
     list,
     complete: false,
   };
-}
+};
