@@ -88,6 +88,13 @@ ul {
   grid-area: list-manager-container;
 }
 
+.todo-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* HEADER */
 
 .header {
@@ -148,16 +155,21 @@ ul {
 .todo-form {
   border-radius: var(--border-radius);
   border: 2px solid var(--background-hover);
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   align-items: center;
   padding: 0.5rem;
 }
 
 input:focus:not(.list-item-checkbox),
-input:hover {
+input:hover:not(.list-item-checkbox) {
   outline: 2px solid var(--accent-color);
   background-color: var(--background-hover);
+}
+
+input.list-item-checkbox:hover {
+  outline: none;
+  background-color: initial;
 }
 
 .task-title-input,
