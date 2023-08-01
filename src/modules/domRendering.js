@@ -172,9 +172,8 @@ function createCheckbox(task) {
 // EXPAND TO-DO TASK //
 
 function openDetailsDialog(task) {
-  openDialog();
-
-  const dialog = document.querySelector('.todo-dialog');
+  const dialog = document.createElement('dialog');
+  dialog.classList.add('todo-dialog');
 
   const formContainer = document.createElement('div');
   formContainer.classList.add('todo-form-container');
@@ -200,7 +199,17 @@ function openDetailsDialog(task) {
   submitBtn.addEventListener('click', () => updateTaskDetails(task));
 
   dialog.appendChild(formContainer);
+  
+  document.body.appendChild(dialog);
+  
+  dialog.showModal();
+
+  dialog.addEventListener('close', () => {
+    document.body.removeChild(dialog);
+  });
 }
+
+// EXPAND TO-DO TASK //
 
 function expandToDoDetails(task) {
   openDetailsDialog(task); 
