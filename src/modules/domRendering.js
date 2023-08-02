@@ -46,6 +46,7 @@ function createListSelect() {
 
 function createToDoForm() {
   console.log('createToDoForm is called');
+  debugger;
   const form = document.createElement('form');
   form.classList.add('todo-form');
 
@@ -215,13 +216,6 @@ function openDetailsDialog(task) {
   });
 }
 
-// EXPAND TO-DO TASK //
-
-function expandToDoDetails(task) {
-  console.log('expandToDoDetails is called');
-  openDetailsDialog(task); 
-}
-
 // UPDATE TASK //
 
 export function updateTaskDetails(task) {
@@ -253,7 +247,7 @@ export function updateTaskDetails(task) {
 
 // DEFAULT LIST RENDERING //
 
-function updateListTitle(listName) {
+export function updateListTitle(listName) {
   console.log('updateListTitle is called');
   const listTitle = document.querySelector('.list-title-text');
   listTitle.textContent = listName;
@@ -288,7 +282,7 @@ function createListItem(task) {
   listItem.appendChild(priority);
 
   listItem.addEventListener('click', () => {
-    expandToDoDetails(task);
+    openDetailsDialog(task);
   });
 
   return listItem;
@@ -308,6 +302,7 @@ function createDeleteBtn(taskItem, onDelete) {
 }
 
 export function renderTaskList(taskList) {
+  debugger;
   console.log('renderTaskList is called');
   const defaultList = document.querySelector('#default-list');
   defaultList.innerHTML = '';
