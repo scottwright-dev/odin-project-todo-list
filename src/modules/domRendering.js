@@ -290,7 +290,10 @@ function createDeleteBtn(taskItem, onDelete) {
   deleteBtn.classList.add('list-item-del-btn');
   deleteBtn.setAttribute('aria-label', 'Delete task');
 
-  deleteBtn.addEventListener('click', onDelete);
+  deleteBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    onDelete();
+  });
 
   taskItem.appendChild(deleteBtn);
 }
