@@ -6,6 +6,7 @@ export const allLists = [
 ];
 
 export function createList(listName) {
+  console.log('createList is called');
   if (listName === 'default list') {
     return allLists[0];
   }

@@ -45,6 +45,7 @@ function createListSelect() {
 // CREATE TO-DO TASK FORM USING ELEMENTS ABOVE//
 
 function createToDoForm() {
+  console.log('createToDoForm is called');
   const form = document.createElement('form');
   form.classList.add('todo-form');
 
@@ -97,6 +98,7 @@ function createToDoForm() {
 // DIALOG MODAL //
 
 export function openDialog() {
+  console.log('openDialog is called');
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
 
@@ -134,6 +136,7 @@ export function openDialog() {
 // TO-DO TASK FORM RENDERING // 
 
 export function renderToDoTask() {
+  console.log('renderToDoTask is called');
   const renderContent = document.querySelector('.render-content');
   renderContent.innerHTML = "";
 
@@ -174,6 +177,7 @@ function createCheckbox(task) {
 // EXPAND TO-DO TASK //
 
 function openDetailsDialog(task) {
+  console.log('openDetailsDialog is called');
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
 
@@ -214,12 +218,14 @@ function openDetailsDialog(task) {
 // EXPAND TO-DO TASK //
 
 function expandToDoDetails(task) {
+  console.log('expandToDoDetails is called');
   openDetailsDialog(task); 
 }
 
 // UPDATE TASK //
 
 export function updateTaskDetails(task) {
+  console.log('updateTaskDetails is called');
   const formContainer = document.querySelector('.todo-form-container');
 
   const titleInput = formContainer.querySelector('.task-title-input');
@@ -248,6 +254,7 @@ export function updateTaskDetails(task) {
 // DEFAULT LIST RENDERING //
 
 function updateListTitle(listName) {
+  console.log('updateListTitle is called');
   const listTitle = document.querySelector('.list-title-text');
   listTitle.textContent = listName;
 }
@@ -301,6 +308,7 @@ function createDeleteBtn(taskItem, onDelete) {
 }
 
 export function renderTaskList(taskList) {
+  console.log('renderTaskList is called');
   const defaultList = document.querySelector('#default-list');
   defaultList.innerHTML = '';
 
@@ -320,6 +328,7 @@ export function renderTaskList(taskList) {
 // LIST MANAGER RENDERING // 
 
 export function addListToListManager(listName) {
+  console.log('addListToListManager is called');
   const listManagerList = document.querySelector('#list-manager-list');
   const listItem = document.createElement('li');
   listItem.textContent = listName;
@@ -349,7 +358,8 @@ export function addListToListManager(listName) {
   });
 }
 
-export function renderListInput() {
+export function renderListInput() { 
+  console.log('renderListInput is called');
   const listInputContainer = document.querySelector('#list-manager-list');
 
   const input = document.createElement('input');
