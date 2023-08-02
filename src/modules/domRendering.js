@@ -152,7 +152,9 @@ function createCheckbox(task) {
   checkbox.classList.add('list-item-checkbox');
   checkbox.checked = task.complete;
 
-  checkbox.addEventListener('click', () => {
+  checkbox.addEventListener('click', (event) => {
+    event.stopPropagation();
+
     task.complete = checkbox.checked;
     const listItem = checkbox.parentNode;
     const textElements = listItem.querySelectorAll('.task-text');
@@ -164,7 +166,7 @@ function createCheckbox(task) {
         textElem.classList.remove('completed-task-text');
       }
     });
-  });  
+  });
 
   return checkbox;
 }
