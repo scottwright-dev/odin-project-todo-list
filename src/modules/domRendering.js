@@ -142,6 +142,12 @@ export function openDialog() {
   dialog.addEventListener('close', () => {
     document.body.removeChild(dialog);
   });
+
+  const cancelBtn = createCancelBtn(() => {
+    dialog.close();
+  })
+
+  dialog.appendChild(cancelBtn);
 }
 
 // TO-DO TASK FORM RENDERING // 
