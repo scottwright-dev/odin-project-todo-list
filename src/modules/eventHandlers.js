@@ -1,9 +1,10 @@
-import { renderTaskList, renderListInput, addListToListManager, openDialog, updateTaskDetails } from './domRendering';
+import { renderTaskList, renderListInput, addListToListManager, openDialog, updateTaskDetails, updateListTitle } from './domRendering';
 import { createToDoTask } from './createToDoTask';
 import { getAllLists } from './listManager';
 
 export function addTaskToList() {
   console.log('addTaskToList function is called');
+  debugger;
   const form = document.querySelector('.todo-form');
 
   if (form) {
@@ -71,6 +72,7 @@ export function handleEditButtonClick(task) {
 
   export function handleAddListButtonClick() {
     console.log('handleAddListButtonClick function is called');
+    debugger;
     const addListButton = document.querySelector('.create-new-list-btn');
   
     addListButton.addEventListener('click', () => {
@@ -83,4 +85,11 @@ export function handleEditButtonClick(task) {
     handleAddListButtonClick();
     renderListInput();
     addListToListManager('default list');
+    updateListTitle('default list');
+
+     // Add a dummy task to the list
+  const defaultTask = createToDoTask('Task Title', 'Task Description', '1/08/2023', 'medium');
+  const defaultList = getAllLists().find(list => list.name === 'default list');
+  defaultList?.tasks.push(defaultTask);
+  renderTaskList(defaultList?.tasks);
   }
