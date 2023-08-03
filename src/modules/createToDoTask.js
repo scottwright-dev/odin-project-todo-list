@@ -1,6 +1,4 @@
-import { format } from 'date-fns';
-
-const formatDate = (date) => date ? format(new Date(date), 'dd/MM/yyyy'): null;
+import { formatDate } from './dateUtility';
 
 export const createToDoTask = (task, description, dueDate, priority, list) => {
 
