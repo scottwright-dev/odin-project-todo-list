@@ -1,6 +1,8 @@
 import { createToDoTask } from './createToDoTask';
 import { createList, deleteList, getAllLists, allLists } from './listManager';
 import { deleteTask, addTaskToList } from './eventHandlers';
+import { formatDate } from './dateUtility';
+
 
 // CREATE ELEMENTS //
 
@@ -212,7 +214,7 @@ function openDetailsDialog(task) {
 
   titleInput.value = task.task;
   descriptionInput.value = task.description;
-  dueDateInput.value = task.dueDate;
+  dueDateInput.value = formatDate(task.dueDate);
   prioritySelect.value = task.priority;
   listSelect.value = task.list;
 
@@ -252,7 +254,7 @@ export function updateTaskDetails(task) {
 
   task.task = titleInput.value;
   task.description = descriptionInput.value;
-  task.dueDate = dueDateInput.value;
+  task.dueDate = formatDate(dueDateInput.value);
   task.priority = prioritySelect.value;
   task.list = listSelect.value;
 
@@ -267,7 +269,7 @@ export function updateTaskDetails(task) {
   renderTaskList(allTasks);
 }
 
-// DEFAULT LIST RENDERING //
+// LIST RENDERING //
 
 export function updateListTitle(listName) {
   console.log('updateListTitle is called');
@@ -366,7 +368,6 @@ export function addListToListManager(listName) {
   } else {
     listManagerList.appendChild(listItem);
   }
-
   createList(listName);
 
   listItem.addEventListener('click', () => {
