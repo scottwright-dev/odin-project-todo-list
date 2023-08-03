@@ -1,8 +1,8 @@
 import { createToDoTask } from './createToDoTask';
-import { createList, getAllLists, allLists } from './listManager';
+import { createList, deleteList, getAllLists, allLists } from './listManager';
 import { deleteTask, addTaskToList } from './eventHandlers';
 
-// CREATE TO-DO FORM ELEMENTS //
+// CREATE ELEMENTS //
 
 function createInputLabel(text, inputType, inputClass, isRequired = false) {
   const label = document.createElement('label');
@@ -25,6 +25,7 @@ function createPriorityOption(value, text) {
 }
 
 function createListSelect() {
+  console.log('createListSelect is called');
   const label = document.createElement('label');
   label.textContent = 'List:';
   const select = document.createElement('select');
@@ -40,6 +41,15 @@ function createListSelect() {
   });
 
   return label;
+}
+
+function createCancelBtn(onClick) {
+  const cancelBtn = document.createElement('button');
+  cancelBtn.textContent = 'Cancel';
+  cancelBtn.classList.add('cancel-btn');
+  cancelBtn.addEventListener('click', onClick);
+  
+  return cancelBtn;
 }
 
 // CREATE TO-DO TASK FORM USING ELEMENTS ABOVE//
@@ -205,6 +215,12 @@ function openDetailsDialog(task) {
   submitBtn.removeEventListener('click', addTaskToList);
   submitBtn.addEventListener('click', () => updateTaskDetails(task));
 
+  const cancelBtn = createCancelBtn(() => {
+    dialog.close();
+  })
+
+  formContainer.appendChild(cancelBtn);
+
   dialog.appendChild(formContainer);
   
   document.body.appendChild(dialog);
@@ -334,6 +350,7 @@ export function addListToListManager(listName) {
 
   deleteBtn.addEventListener('click', () => {
     listItem.remove();
+    deleteList(listName); 
   });
 
   listItem.appendChild(deleteBtn);
