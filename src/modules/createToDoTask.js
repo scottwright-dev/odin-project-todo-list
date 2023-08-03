@@ -1,15 +1,8 @@
-import { formatDate } from './dateUtility';
-
-export const createToDoTask = (task, description, dueDate, priority, list) => {
-
-  const formattedDueDate = formatDate(dueDate);
-
-  return {
+export const createToDoTask = (task, description, dueDate, priority, list) => ({
     task,
     description,
-    dueDate: formattedDueDate,
+    dueDate,
     priority,
     list,
     complete: false,
-  };
-};
+  });

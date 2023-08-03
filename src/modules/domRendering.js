@@ -214,7 +214,8 @@ function openDetailsDialog(task) {
 
   titleInput.value = task.task;
   descriptionInput.value = task.description;
-  dueDateInput.value = formatDate(task.dueDate);
+  dueDateInput.value = task.dueDate;
+  console.log('dueDateInput value is:', task.dueDate);
   prioritySelect.value = task.priority;
   listSelect.value = task.list;
 
@@ -254,7 +255,8 @@ export function updateTaskDetails(task) {
 
   task.task = titleInput.value;
   task.description = descriptionInput.value;
-  task.dueDate = formatDate(dueDateInput.value);
+  task.dueDate = dueDateInput.value;
+  console.log('dateDate value is:', dueDateInput.value);
   task.priority = prioritySelect.value;
   task.list = listSelect.value;
 

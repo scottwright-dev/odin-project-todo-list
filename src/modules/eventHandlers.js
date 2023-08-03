@@ -88,7 +88,7 @@ export function handleEditButtonClick(task) {
     updateListTitle('default list');
 
      // Add a dummy task to the list
-  const defaultTask = createToDoTask('Task Title', 'Task Description', '1/08/2023', 'medium');
+  const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium');
   const defaultList = getAllLists().find(list => list.name === 'default list');
   defaultList?.tasks.push(defaultTask);
   renderTaskList(defaultList?.tasks);
