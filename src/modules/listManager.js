@@ -27,6 +27,14 @@ export function createList(listName) {
   };
 }
 
+export function deleteList(listName) {
+  console.log("Trying to find list with name:", listName); 
+  const index = allLists.findIndex(list => list.name === listName);
+  if (index !== -1) {
+    allLists.splice(index, 1);
+  }
+}
+
 export function getAllLists() {
   return allLists;
 }

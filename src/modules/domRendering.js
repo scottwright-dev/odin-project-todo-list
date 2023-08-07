@@ -374,9 +374,11 @@ export function addListToListManager(listName) {
 
   listItem.addEventListener('click', () => {
     const selectedList = allLists.find(list => list.name === listName);
-    renderTaskList(selectedList.tasks);
-    updateListTitle(listName);
-  });
+    if (selectedList) {
+        renderTaskList(selectedList.tasks);
+        updateListTitle(listName);
+    }
+});
 }
 
 export function renderListInput() { 
