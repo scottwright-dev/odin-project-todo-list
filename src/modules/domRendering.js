@@ -190,7 +190,6 @@ function createCheckbox(task) {
 // EXPAND TO-DO TASK //
 
 function openDetailsDialog(task) {
-  console.log("task is set to", task);
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
 
@@ -236,6 +235,7 @@ function openDetailsDialog(task) {
 // UPDATE TASK //
 
 export function updateTaskDetails(task) {
+
   const formContainer = document.querySelector('.todo-form-container');
 
   const titleInput = formContainer.querySelector('.task-title-input');
@@ -252,27 +252,22 @@ export function updateTaskDetails(task) {
   task.priority = prioritySelect.value;
   task.list = listSelect.value;
 
-  // find the old list and new list
   const oldList = allLists.find(list => list.name === oldListName);
   const newList = allLists.find(list => list.name === task.list);
 
-  if (oldList) {
-  oldList.tasks = oldList.tasks.filter(t => t !== task);
+  if (oldListName !== task.list && oldList) {
+    oldList.tasks = oldList.tasks.filter(t => t !== task);
   }
 
-  if (newList) {
-  newList.tasks.push(task);
+  if (!oldList.tasks.includes(task) && newList) {
+    newList.tasks.push(task);
   }
 
-  const allTasks = [];
-  
-  allLists.forEach(list => {
-    list.tasks.forEach(task => {
-      allTasks.push(task);
-    });
-  });
+  renderTaskList(newList.tasks);
 
-  renderTaskList(allTasks);
+  if (oldListName !== task.list) {
+    renderTaskList(oldList.tasks);
+  }
 }
 
 // LIST RENDERING //
