@@ -1,4 +1,4 @@
 import "./style.css";
-import { initialise } from "./modules/eventHandlers";
+import { initialise } from "./modules/controller";
 
 initialise();

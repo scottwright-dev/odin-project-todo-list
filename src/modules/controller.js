@@ -1,10 +1,10 @@
-import { renderTaskList, renderListInput, addListToListManager, openDialog, updateTaskDetails, updateListTitle } from './domRendering';
-import { createToDoTask } from './createToDoTask';
-import { getAllLists } from './listManager';
+/* eslint-disable import/no-cycle */
+import { createToDoTask, updateTaskDetails } from './models/taskModel';
+import { getAllLists } from './models/listModel';
+import { renderTaskList, updateListTitle, renderListInput, addListToListManager } from './views/listView';
+import { openDialog } from './views/modalView';
 
 export function addTaskToList() {
-  console.log('addTaskToList function is called');
-  debugger;
   const form = document.querySelector('.todo-form');
 
   if (form) {
@@ -30,13 +30,11 @@ export function addTaskToList() {
 }
 
 export function deleteTask(index, taskList, renderFunc) {
-  console.log('deleteTask function is called');
   taskList.splice(index, 1);
   renderFunc(taskList);
 }
  
 export function handleAddTaskButtonClick() {
-  console.log('handleAddTaskButtonClick function is called');
   const addTaskButton = document.querySelector(".add-task-btn");
 
   addTaskButton.addEventListener("click", () => {
@@ -56,7 +54,6 @@ export function handleAddTaskButtonClick() {
 }
 
 export function handleEditButtonClick(task) {
-  console.log('handleEditButtonClick function is called');
   openDialog();
 
   const form = document.querySelector('.todo-form');
@@ -71,8 +68,6 @@ export function handleEditButtonClick(task) {
 }
 
   export function handleAddListButtonClick() {
-    console.log('handleAddListButtonClick function is called');
-    debugger;
     const addListButton = document.querySelector('.create-new-list-btn');
   
     addListButton.addEventListener('click', () => {
