@@ -22,7 +22,7 @@ export function openDialog() {
     const priority = toDoForm.querySelector('.task-priority-select').value;
     const listName = toDoForm.querySelector('.task-list-select').value;
 
-    const addTask = createToDoTask(title, description, dueDate, priority);
+    const addTask = createToDoTask(title, description, dueDate, priority, listName);
 
     const selectedList = getAllLists().find(list => list.name === listName);
 
@@ -50,6 +50,9 @@ export function openDialog() {
 // UPDATE TASK MODAL //
 
 export function openDetailsDialog(task) {
+  console.log('in openDetailsDialog the Task object is:', task);
+console.log('in openDetailsDialog Task list property is:', task.list);
+
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
 
