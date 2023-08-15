@@ -50,8 +50,6 @@ export function openDialog() {
 // UPDATE TASK MODAL //
 
 export function openDetailsDialog(task) {
-  console.log('in openDetailsDialog the Task object is:', task);
-console.log('in openDetailsDialog Task list property is:', task.list);
 
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
