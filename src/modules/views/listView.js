@@ -3,6 +3,7 @@ import { openDetailsDialog } from './modalView';
 import { deleteTask } from '../controller';
 import { createCheckbox } from './taskView';
 import { deleteList, createList, getAllLists } from '../models/listModel';
+import { formatDate } from '../dateUtility';
 
 // LIST RENDERING //
 
@@ -26,7 +27,7 @@ export function updateListTitle(listName) {
     description.classList.add('task-text');
   
     const dueDate = document.createElement('p');
-    dueDate.textContent = task.dueDate;
+    dueDate.textContent = formatDate(task.dueDate); 
     dueDate.classList.add('task-text');
   
     const priority = document.createElement('p');
