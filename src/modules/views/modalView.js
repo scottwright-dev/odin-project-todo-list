@@ -69,7 +69,8 @@ export function openDetailsDialog(task) {
   titleInput.value = task.task;
   descriptionInput.value = task.description;
   dueDateInput.value = task.dueDate;
-  prioritySelect.value = task.priority;
+  prioritySelect.value = task.priority; 
+  listSelect.value = task.list;
 
   const submitBtn = formContainer.querySelector('.task-submit-btn');
   submitBtn.value = 'update task';
