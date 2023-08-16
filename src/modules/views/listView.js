@@ -99,7 +99,12 @@ export function updateListTitle(listName) {
     } else {
       listManagerList.appendChild(listItem);
     }
-    createList(listName);
+  
+    const existingList = getAllLists().find(list => list.name === listName);
+  
+    if (!existingList) {
+      createList(listName);
+    }
   
     listItem.addEventListener('click', () => {
       const selectedList = getAllLists().find(list => list.name === listName);
@@ -107,8 +112,8 @@ export function updateListTitle(listName) {
           renderTaskList(selectedList.tasks);
           updateListTitle(listName);
       }
-  });
-  }
+    });
+  }  
   
   export function renderListInput() { 
     const listInputContainer = document.querySelector('#list-manager-list');
