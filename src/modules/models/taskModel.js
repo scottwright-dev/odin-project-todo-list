@@ -2,6 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { renderTaskList } from '../views/listView';
 import { getAllLists } from './listModel';
+import { saveData } from './storageModel';
 
 // TO DO TASK OBJECT //
 
@@ -49,4 +50,5 @@ export function updateTaskDetails(task) {
     if (oldListName !== task.list) {
         renderTaskList(oldList.tasks);
     }
+    saveData(getAllLists()); 
 }
