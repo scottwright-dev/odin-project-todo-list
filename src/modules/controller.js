@@ -76,6 +76,7 @@ export function handleEditButtonClick(task) {
   }
 
   export function initialise() {
+    handleAddTaskButtonClick();
     renderListInput();
     addListToListManager('default list');
     updateListTitle('default list');
