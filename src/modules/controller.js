@@ -1,8 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { createToDoTask, updateTaskDetails } from './models/taskModel';
-import { getAllLists } from './models/listModel';
+import { getAllLists, setAllLists } from './models/listModel';
 import { renderTaskList, updateListTitle, renderListInput, addListToListManager } from './views/listView';
 import { openDialog } from './views/modalView';
+import { loadData, saveData } from './models/storageModel';
 
 export function addTaskToList() {
   const form = document.querySelector('.todo-form');
@@ -23,6 +24,7 @@ export function addTaskToList() {
 
       selectedList?.tasks.push(addTask);
       renderTaskList(selectedList?.tasks);
+      saveData(getAllLists());
 
       form.reset();
     });
@@ -32,6 +34,7 @@ export function addTaskToList() {
 export function deleteTask(index, taskList, renderFunc) {
   taskList.splice(index, 1);
   renderFunc(taskList);
+  saveData(getAllLists()); 
 }
  
 export function handleAddTaskButtonClick() {
@@ -69,7 +72,6 @@ export function handleEditButtonClick(task) {
 
   export function handleAddListButtonClick() {
     const addListButton = document.querySelector('.create-new-list-btn');
-  
     addListButton.addEventListener('click', () => {
       renderListInput();
     });
@@ -78,12 +80,22 @@ export function handleEditButtonClick(task) {
   export function initialise() {
     handleAddTaskButtonClick();
     renderListInput();
-    addListToListManager('default list');
-    updateListTitle('default list');
-
-     // Add a dummy task to the list
-  const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium', 'default list');
-  const defaultList = getAllLists().find(list => list.name === 'default list');
-  defaultList?.tasks.push(defaultTask);
-  renderTaskList(defaultList?.tasks);
-  }
+  
+    // Load data from local storage and render it
+    const storedData = loadData();
+    if (storedData && storedData.length > 0) {
+      setAllLists(storedData);
+      storedData.forEach((list) => {
+        renderTaskList(list.tasks);
+        addListToListManager(list.name);
+      });
+    } else {
+      // If there's no stored data, add a default list and a dummy task
+      addListToListManager('default list');
+      updateListTitle('default list');
+      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium', 'default list');
+      const defaultList = getAllLists().find(list => list.name === 'default list');
+      defaultList?.tasks.push(defaultTask);
+      renderTaskList(defaultList?.tasks);
+    }
+  }  
