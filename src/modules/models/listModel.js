@@ -1,9 +1,15 @@
+import { saveData } from './storageModel';
+
 const allLists = [
     {
       name: 'default list',
       tasks: []
     }
   ];
+
+    export function getAllLists() {
+    return allLists;
+  }  
   
   export function createList(listName) {
     if (listName === 'default list') {
@@ -15,6 +21,7 @@ const allLists = [
       tasks: taskList,
     };
     allLists.push(listObj);
+    saveData(allLists);
   
     const addTaskToList = (task) => {
       taskList.push(task);
@@ -30,9 +37,11 @@ const allLists = [
     const index = allLists.findIndex(list => list.name === listName);
     if (index !== -1) {
       allLists.splice(index, 1);
+      saveData(allLists);
     }
   }
-  
-  export function getAllLists() {
-    return allLists;
+
+  export function setAllLists(newLists) {
+    allLists.length = 0;
+    allLists.push(...newLists);
   }  
