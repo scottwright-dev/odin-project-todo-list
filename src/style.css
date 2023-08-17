@@ -66,26 +66,32 @@ ul {
 /* LAYOUT */
 
 .container {
-  display: grid;
-  grid-template-columns: 0.5fr 1.5fr;
-  grid-template-rows: 0.4fr 1.6fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "header header"
-    "list-manager-container default-list-container";
-  min-height: 90vh;
   background: var(--background-color);
   color: var(--text-color);
   line-height: var(--line-height);
   font-family: var(--font-family);
+  max-width: 95%;
+  margin: 0 auto; 
 }
 
-.default-list-container {
-  grid-area: default-list-container;
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 6rem;
 }
 
 .list-manager-container {
-  grid-area: list-manager-container;
+  flex: 1; 
+  min-width: 100px; 
+  max-width: 500px; 
+}
+
+.default-list-container {
+  flex: 3; 
+  min-width: 100px;
+  max-width: 500px; 
 }
 
 .todo-dialog {
@@ -98,14 +104,12 @@ ul {
 /* HEADER */
 
 .header {
-  grid-area: header;
+  margin-top: 1rem;
 }
 
 .header-text {
-  font-size: clamp(1.4rem, 8vw, 2.75rem);
+  font-size: clamp(1.4rem, 12vw, 2.75rem);
   text-align: right;
-  padding-right: 2rem;
-  padding-top: 0.5rem;
 }
 
 .header-text::before,
@@ -243,7 +247,6 @@ input.list-item-checkbox:hover {
   border: 2px solid var(--text-color);
   border-radius: var(--border-radius);
   padding-left: var(--padding);
-  margin-right: 1rem;
 }
 
 .list-manager-title {
