@@ -80,18 +80,7 @@ ul {
   align-items: flex-start;
   gap: 1.5rem;
   margin-top: 6rem;
-}
-
-.list-manager-container {
-  flex: 1; 
-  min-width: 100px; 
-  max-width: 500px; 
-}
-
-.default-list-container {
-  flex: 3; 
-  min-width: 100px;
-  max-width: 500px; 
+  height: 70vh;
 }
 
 .todo-dialog {
@@ -125,6 +114,87 @@ ul {
   content: ")";
 }
 
+
+/* DEFAULT LIST */
+
+.default-list-container {
+  flex: 3; 
+  min-width: 100px;
+  max-width: 600px; 
+  background-color: var(--background-shade);
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  padding-left: var(--padding);
+  height: 100%;
+}
+
+.list-item {
+  display: grid;
+  border-bottom: 2px solid var(--background-hover);
+  padding-bottom: 1rem;
+}
+
+.list-title-text {
+  color: var(--accent-color);
+}
+
+.list-item-checkbox {
+  background-color: var(--background-shade);
+  color: inherit;
+  margin: 0 1rem;
+  border: 50%;
+}
+
+.completed-task-text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.list-item-del-btn,
+.list-delete-btn {
+  filter: var(--filter);
+}
+
+.list-item-del-btn::before,
+.list-delete-btn::before {
+  content: "";
+  cursor: pointer;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url(/src/assets/icons/trash-outline.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+/* LIST MANAGER */
+
+.list-manager-container {
+  flex: 1; 
+  min-width: 100px; 
+  max-width: 250px; 
+  background-color: var(--background-shade);
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  padding-left: var(--padding);
+  height: 100%;
+}
+
+.list-manager-title {
+  text-align: left;
+}
+
+.list-name-input {
+  appearance: none;
+  background-color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--background-color);
+  height: 2rem;
+  margin: 0.5rem 1rem;
+}
+
 /* BUTTONS */
 
 .add-task-btn,
@@ -134,8 +204,8 @@ ul {
   background-position: left center;
   background-size: contain;
   cursor: pointer;
-  width: 8rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border: none;
   background-color: transparent;
   padding-left: 1rem;
@@ -196,69 +266,4 @@ input.list-item-checkbox:hover {
   background-color: var(--accent-color);
   text-align: center;
   padding: 0 2em;
-}
-
-/* DEFAULT LIST */
-
-.list-item {
-  display: grid;
-  border-bottom: 2px solid var(--background-hover);
-  padding-bottom: 1rem;
-}
-
-.list-title-text {
-  color: var(--accent-color);
-}
-
-.list-item-checkbox {
-  background-color: var(--background-shade);
-  color: inherit;
-  margin: 0 1rem;
-  border: 50%;
-}
-
-.completed-task-text {
-  text-decoration: line-through;
-  opacity: 0.5;
-}
-
-.list-item-del-btn,
-.list-delete-btn {
-  filter: var(--filter);
-}
-
-.list-item-del-btn::before,
-.list-delete-btn::before {
-  content: "";
-  cursor: pointer;
-  display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-image: url(/src/assets/icons/trash-outline.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin: 0 auto;
-}
-
-/* LIST MANAGER */
-
-.list-manager-container {
-  background-color: var(--background-shade);
-  border: 2px solid var(--text-color);
-  border-radius: var(--border-radius);
-  padding-left: var(--padding);
-}
-
-.list-manager-title {
-  text-align: left;
-}
-
-.list-name-input {
-  appearance: none;
-  background-color: var(--text-color);
-  border: none;
-  border-radius: var(--border-radius);
-  color: var(--background-color);
-  height: 2rem;
-  margin: 0.5rem 1rem;
 }
