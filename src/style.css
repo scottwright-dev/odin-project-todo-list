@@ -4,6 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  /* outline: 2px solid red; */
 }
 
 * {
@@ -79,7 +80,7 @@ ul {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
   height: 70vh;
 }
 
@@ -197,18 +198,21 @@ ul {
 
 /* BUTTONS */
 
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .add-task-btn,
 .create-new-list-btn {
   background-image: url('./assets/icons/add-circle-outline.svg');
   background-repeat: no-repeat;
   background-position: left center;
   background-size: contain;
-  cursor: pointer;
   width: 3rem;
   height: 3rem;
   border: none;
   background-color: transparent;
-  padding-left: 1rem;
   transition: var(--transition);
   filter: var(--filter);
 }
@@ -229,9 +233,6 @@ ul {
 .todo-form {
   border-radius: var(--border-radius);
   border: 2px solid var(--background-hover);
-  /* display: flex; */
-  flex-wrap: wrap;
-  align-items: center;
   padding: 0.5rem;
 }
 
