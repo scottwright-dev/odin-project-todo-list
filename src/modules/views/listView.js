@@ -16,36 +16,39 @@ export function updateListTitle(listName) {
     const listItem = document.createElement('li');
     listItem.classList.add('list-item');
   
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('list-item-text-container');
+    listItem.appendChild(textContainer);
+  
     const checkbox = createCheckbox(task);
-    
+    textContainer.appendChild(checkbox);
+  
     const title = document.createElement('span');
     title.textContent = task.task;
     title.classList.add('task-text');
+    textContainer.appendChild(title);
   
     const description = document.createElement('p');
     description.textContent = task.description;
     description.classList.add('task-text');
+    textContainer.appendChild(description);
   
     const dueDate = document.createElement('p');
     dueDate.textContent = formatDate(task.dueDate); 
     dueDate.classList.add('task-text');
+    textContainer.appendChild(dueDate);
   
     const priority = document.createElement('p');
     priority.textContent = task.priority;
     priority.classList.add('task-text');
-  
-    listItem.appendChild(checkbox);
-    listItem.appendChild(title);
-    listItem.appendChild(description);
-    listItem.appendChild(dueDate);
-    listItem.appendChild(priority);
+    textContainer.appendChild(priority);
   
     listItem.addEventListener('click', () => {
       openDetailsDialog(task);
     });
   
     return listItem;
-  }
+  }  
   
   export function createDeleteBtn(taskItem, onDelete) {
     const deleteBtn = document.createElement('div');
