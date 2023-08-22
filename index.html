@@ -13,14 +13,18 @@
       <main class="main-content">
         <section class="list-manager-container" aria-label="List Manager">
           <h2 class="list-manager-title">List Manager</h2>
-          <button class="create-new-list-btn" aria-label="Create List"></button>
+          <div class="button-container">
+            <button class="create-new-list-btn" aria-label="Create List"></button>
+          </div>
           <ul id="list-manager-list" role="list"></ul>
         </section>
-          <div class="default-list-container">
-            <h2 class="list-title-text"></h2>
+        <div class="default-list-container">
+          <h2 class="list-title-text"></h2>
+          <div class="button-container">
             <button class="add-task-btn" aria-label="Add Task"></button>
-            <ul id="default-list" role="list"></ul>
           </div>
+          <ul id="default-list" role="list"></ul>
+        </div>        
           <div class="render-content"></div>
       </main>      
   </body>
