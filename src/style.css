@@ -4,7 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /* outline: 2px solid red; */
+  /* outline: 2px solid red;   */
 }
 
 * {
@@ -75,12 +75,19 @@ ul {
   margin: 0 auto; 
 }
 
+.title-and-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
 .main-content {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;
-  /* margin-top: 6rem; */
+  /* gap: 1.5rem; */
+  margin-top: 4rem;
   height: 70vh;
 }
 
@@ -121,7 +128,7 @@ ul {
 .default-list-container {
   flex: 3; 
   min-width: 100px;
-  max-width: 600px; 
+  max-width: 450px; 
   background-color: var(--background-shade);
   border: 2px solid var(--text-color);
   border-radius: var(--border-radius);
@@ -130,9 +137,12 @@ ul {
 }
 
 .list-item {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 2px solid var(--background-hover);
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .list-title-text {
@@ -142,8 +152,12 @@ ul {
 .list-item-checkbox {
   background-color: var(--background-shade);
   color: inherit;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   border: 50%;
+}
+
+.task-text {
+  padding-left: 4rem;
 }
 
 .completed-task-text {
@@ -154,6 +168,9 @@ ul {
 .list-item-del-btn,
 .list-delete-btn {
   filter: var(--filter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .list-item-del-btn::before,
@@ -197,11 +214,6 @@ ul {
 }
 
 /* BUTTONS */
-
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-}
 
 .add-task-btn,
 .create-new-list-btn {
