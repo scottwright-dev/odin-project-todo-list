@@ -5,7 +5,7 @@ import { createCheckbox } from './taskView';
 import { deleteList, createList, getAllLists } from '../models/listModel';
 import { formatDate } from '../dateUtility';
 
-// LIST RENDERING //
+// DEFAULT LIST RENDERING //
 
 export function updateListTitle(listName) {
     const listTitle = document.querySelector('.list-title-text');
@@ -120,7 +120,7 @@ export function updateListTitle(listName) {
   }  
   
   export function renderListInput() { 
-    const listInputContainer = document.querySelector('#list-manager-list');
+    const listInputContainer = document.querySelector('#list-input-container');
   
     const input = document.createElement('input');
     input.type = 'text';
@@ -144,6 +144,8 @@ export function updateListTitle(listName) {
       if (listName) {
         addListToListManager(listName);
         input.value = '';
+
+        inputContainer.remove();
       }
     });
   }

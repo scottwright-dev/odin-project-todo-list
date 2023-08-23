@@ -70,16 +70,16 @@ export function handleEditButtonClick(task) {
   });
 }
 
-  export function handleAddListButtonClick() {
-    const addListButton = document.querySelector('.create-new-list-btn');
-    addListButton.addEventListener('click', () => {
+export function handleAddListButtonClick() {
+  const addListButton = document.querySelector('.create-new-list-btn');
+  addListButton.addEventListener('click', () => {
       renderListInput();
-    });
-  }
+  });
+}
 
   export function initialise() {
     handleAddTaskButtonClick();
-    renderListInput();
+    handleAddListButtonClick();
   
     // Load data from local storage and render it
     const storedData = loadData();
