@@ -24,7 +24,7 @@ function createPriorityOption(value, text) {
 
 function createListSelect() {
   const label = document.createElement('label');
-  label.textContent = 'List:';
+  label.textContent = 'List';
   const select = document.createElement('select');
   select.classList.add('task-list-select');
   label.appendChild(select);
@@ -55,29 +55,29 @@ export function createToDoForm() {
   const form = document.createElement('form');
   form.classList.add('todo-form');
 
-  const titleLabel = createInputLabel('Title:', 'text', 'task-title-input', true);
+  const titleLabel = createInputLabel('Title', 'text', 'task-title-input', true);
   form.appendChild(titleLabel);
 
-  const descriptionLabel = createInputLabel('Description:', 'text', 'task-description-input');
+  const descriptionLabel = createInputLabel('Description', 'text', 'task-description-input');
   form.appendChild(descriptionLabel);
 
-  const dueDateLabel = createInputLabel('Date:', 'date', 'task-dueDate-input');
+  const dueDateLabel = createInputLabel('Date', 'date', 'task-dueDate-input');
   form.appendChild(dueDateLabel);
 
   const priorityLabel = document.createElement('label');
-  priorityLabel.textContent = 'Priority:';
+  priorityLabel.textContent = 'Priority';
   const prioritySelect = document.createElement('select');
   prioritySelect.classList.add('task-priority-select');
   priorityLabel.appendChild(prioritySelect);
   form.appendChild(priorityLabel);
 
-  const lowPriority = createPriorityOption('low', 'Low - !');
+  const lowPriority = createPriorityOption('low', 'Low');
   prioritySelect.appendChild(lowPriority);
 
-  const medPriority = createPriorityOption('medium', 'Medium - !!');
+  const medPriority = createPriorityOption('medium', 'Medium');
   prioritySelect.appendChild(medPriority);
 
-  const highPriority = createPriorityOption('high', 'High - !!!');
+  const highPriority = createPriorityOption('high', 'High');
   prioritySelect.appendChild(highPriority);
 
   const listLabel = createListSelect();
