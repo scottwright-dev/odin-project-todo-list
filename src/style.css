@@ -18,9 +18,6 @@ body {
 }
 
 img,
-picture,
-video,
-canvas,
 svg {
   display: block;
   max-width: 100%;
@@ -41,6 +38,7 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  letter-spacing: var(--letter-spacing);
 }
 
 ul {
@@ -48,10 +46,11 @@ ul {
 }
 
 :root {
-  --accent-color: #3484F5;
-  --background-color: #1B1C1E;
-  --background-shade: #3A3C40;
-  --background-hover: #575A60;
+  --accent-color: #5F85DB;
+  --accent-lighter: #90B8F8;
+  --background-color: #26282B;
+  --background-shade: #353941;
+  --background-hover: #9ba2aa;
   --border: 3px solid var(--text-color);
   --border-radius: 6px;
   --filter: invert(44%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(99%);
@@ -59,6 +58,7 @@ ul {
   --font-size: 16px;
   --font-weight: 400;
   --line-height: 1.5;
+  --letter-spacing: 0.05rem;
   --padding: 1.5rem;
   --text-color: #F3F3F3;
   --transition: transform 0.2s ease-in-out;
@@ -85,10 +85,15 @@ ul {
 .main-content {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  /* gap: 1.5rem; */
+  align-items: stretch;
   margin-top: 4rem;
-  height: 70vh;
+  gap: 2rem;
+}
+
+.list-manager-container,
+.default-list-container {
+  min-height: 50vh;
+  flex-grow: 1;
 }
 
 .todo-dialog {
@@ -130,10 +135,8 @@ ul {
   min-width: 100px;
   max-width: 450px; 
   background-color: var(--background-shade);
-  border: 2px solid var(--text-color);
   border-radius: var(--border-radius);
   padding-left: var(--padding);
-  height: 100%;
 }
 
 .list-item {
@@ -193,10 +196,8 @@ ul {
   min-width: 100px; 
   max-width: 250px; 
   background-color: var(--background-shade);
-  border: 2px solid var(--text-color);
   border-radius: var(--border-radius);
   padding-left: var(--padding);
-  height: 100%;
 }
 
 .list-manager-title {
@@ -242,12 +243,6 @@ ul {
 
 /* TASK FORM */
 
-.todo-form {
-  border-radius: var(--border-radius);
-  border: 2px solid var(--background-hover);
-  padding: 0.5rem;
-}
-
 input:focus:not(.list-item-checkbox),
 input:hover:not(.list-item-checkbox) {
   outline: 2px solid var(--accent-color);
@@ -277,6 +272,55 @@ input.list-item-checkbox:hover {
 .task-submit-btn,
 .add-list-btn {
   background-color: var(--accent-color);
-  text-align: center;
   padding: 0 2em;
+}
+/* MODAL */
+
+.todo-dialog {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.todo-form {
+  background-color: var(--accent-lighter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--padding);
+  max-width: 400px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input, select {
+  appearance: none;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+}
+
+button, input[type="submit"] {
+  padding: 8px;
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.cancel-btn {
+  background-color: var(--background-hover);
+  color: var(--text-color);
+  width: 100%;
+}
+
+.cancel-btn:hover {
+  opacity: 75%;
 }
