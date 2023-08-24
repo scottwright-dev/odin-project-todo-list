@@ -69,16 +69,16 @@ ul {
 .container {
   background: var(--background-color);
   color: var(--text-color);
-  line-height: var(--line-height);
   font-family: var(--font-family);
-  max-width: 95%;
+  line-height: var(--line-height);
   margin: 0 auto; 
+  max-width: 95%;
 }
 
 .title-and-btn-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 0.5rem;
 }
 
@@ -136,13 +136,11 @@ ul {
   max-width: 450px; 
   background-color: var(--background-shade);
   border-radius: var(--border-radius);
-  padding-left: var(--padding);
 }
 
 .list-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   border-bottom: 2px solid var(--background-hover);
   padding-bottom: 1.25rem;
   padding-right: 1.25rem;
@@ -159,8 +157,8 @@ ul {
   border: 50%;
 }
 
-.task-text {
-  padding-left: 4rem;
+.list-item {
+  padding-left: 3rem;
 }
 
 .completed-task-text {
@@ -197,7 +195,6 @@ ul {
   max-width: 250px; 
   background-color: var(--background-shade);
   border-radius: var(--border-radius);
-  padding-left: var(--padding);
 }
 
 .list-manager-title {
@@ -274,6 +271,7 @@ input.list-item-checkbox:hover {
   background-color: var(--accent-color);
   padding: 0 2em;
 }
+
 /* MODAL */
 
 .todo-dialog {
@@ -284,10 +282,9 @@ input.list-item-checkbox:hover {
 }
 
 .todo-form {
-  background-color: var(--accent-lighter);
+  background-color: var(--text-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: var(--padding);
   max-width: 400px;
@@ -300,7 +297,6 @@ label {
 }
 
 input, select {
-  appearance: none;
   width: 100%;
   margin-bottom: 20px;
   border-radius: var(--border-radius);
