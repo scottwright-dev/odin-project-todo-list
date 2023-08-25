@@ -52,7 +52,7 @@ ul {
   --background-shade: #353941;
   --background-hover: #9ba2aa;
   --border-radius: 6px;
-  --filter: invert(44%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(99%);
+  --filter: brightness(0) saturate(100%) invert(52%) sepia(16%) saturate(1722%) hue-rotate(184deg) brightness(96%) contrast(85%);
   --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-size: 16px;
   --font-weight: 400;
@@ -173,9 +173,6 @@ ul {
 .list-item-del-btn,
 .list-delete-btn {
   filter: var(--filter);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .list-item-del-btn::before,
