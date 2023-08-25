@@ -128,7 +128,7 @@ export function createCheckbox(task) {
     // eslint-disable-next-line no-param-reassign
     task.complete = checkbox.checked;
     const listItem = checkbox.parentNode;
-    const textElements = listItem.querySelectorAll('.task-text');
+    const textElements = listItem.querySelectorAll('.task-text, .task-text-title');
 
     textElements.forEach(textElem => {
       if (checkbox.checked) {

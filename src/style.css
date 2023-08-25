@@ -51,7 +51,6 @@ ul {
   --background-color: #26282B;
   --background-shade: #353941;
   --background-hover: #9ba2aa;
-  --border: 3px solid var(--text-color);
   --border-radius: 6px;
   --filter: invert(44%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(99%);
   --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -140,10 +139,18 @@ ul {
 
 .list-item {
   display: flex;
-  justify-content: space-between;
+  align-items: center; 
+  justify-content: space-between; 
   border-bottom: 2px solid var(--background-hover);
-  padding-bottom: 1.25rem;
-  padding-right: 1.25rem;
+  padding: 1.25rem;
+}
+
+.task-text-title {
+  font-weight: bold;
+}
+
+.task-text {
+  opacity: 50%;
 }
 
 .list-title-text {
@@ -151,14 +158,11 @@ ul {
 }
 
 .list-item-checkbox {
+  margin-right: 1rem;
+  align-self: center;
   background-color: var(--background-shade);
-  color: inherit;
-  margin: 0 0.5rem;
-  border: 50%;
-}
-
-.list-item {
-  padding-left: 3rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .completed-task-text {
@@ -296,7 +300,7 @@ label {
   font-weight: bold;
 }
 
-input, select {
+input {
   width: 100%;
   margin-bottom: 20px;
   border-radius: var(--border-radius);
