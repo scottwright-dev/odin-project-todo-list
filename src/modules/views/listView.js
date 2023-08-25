@@ -15,17 +15,17 @@ export function updateListTitle(listName) {
   function createListItem(task) {
     const listItem = document.createElement('li');
     listItem.classList.add('list-item');
+
+    const checkbox = createCheckbox(task);
+    listItem.appendChild(checkbox);
   
     const textContainer = document.createElement('div');
     textContainer.classList.add('list-item-text-container');
     listItem.appendChild(textContainer);
   
-    const checkbox = createCheckbox(task);
-    textContainer.appendChild(checkbox);
-  
     const title = document.createElement('span');
     title.textContent = task.task;
-    title.classList.add('task-text');
+    title.classList.add('task-text-title');
     textContainer.appendChild(title);
   
     const description = document.createElement('p');
