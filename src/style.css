@@ -149,6 +149,8 @@ ul {
 
 .list-title-text {
   color: var(--accent-color);
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
 .list-item-checkbox {
@@ -194,6 +196,8 @@ ul {
 }
 
 .list-manager-title {
+  margin-top: 1rem;
+  margin-left: 1rem;
   text-align: left;
 }
 
@@ -228,13 +232,13 @@ ul {
 
 input:focus:not(.list-item-checkbox),
 input:hover:not(.list-item-checkbox) {
-  outline: 2px solid var(--accent-color);
-  background-color: var(--background-hover);
+  background-color: var(--acc);
 }
 
 input.list-item-checkbox:hover {
   outline: none;
-  background-color: initial;
+  background-color: grey;
+  cursor: pointer;
 }
 
 .task-title-input,
