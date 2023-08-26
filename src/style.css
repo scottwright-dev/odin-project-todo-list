@@ -74,13 +74,6 @@ ul {
   max-width: 95%;
 }
 
-.title-and-btn-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
-}
-
 .main-content {
   display: flex;
   justify-content: center;
@@ -91,6 +84,7 @@ ul {
 
 .list-manager-container,
 .default-list-container {
+  position: relative;
   min-height: 50vh;
   flex-grow: 1;
 }
@@ -191,6 +185,7 @@ ul {
 /* LIST MANAGER */
 
 .list-manager-container {
+  position: relative;
   flex: 1; 
   min-width: 100px; 
   max-width: 250px; 
@@ -225,9 +220,13 @@ ul {
   background-color: transparent;
   transition: var(--transition);
   filter: var(--filter);
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .new-list-btn {
+
   filter: invert(94%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(200%);
 }
 
