@@ -210,24 +210,18 @@ ul {
 
 .add-task-btn,
 .new-list-btn {
-  background-image: url('./assets/icons/add-circle-outline.svg');
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: contain;
-  width: 3rem;
-  height: 3rem;
   border: none;
-  background-color: transparent;
-  transition: var(--transition);
-  filter: var(--filter);
+  border-radius: var(--border-radius);
+  margin: 1rem;
   position: absolute;
   bottom: 0;
   right: 0;
+  width: 8.5rem;
 }
 
-.new-list-btn {
-
-  filter: invert(94%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(200%);
+.add-task-btn:hover,
+.new-list-btn:hover {
+  background-color: var(--accent-lighter);
 }
 
 /* TASK FORM */
@@ -248,14 +242,68 @@ input.list-item-checkbox:hover {
 .task-dueDate-input,
 .task-submit-btn,
 .add-list-btn {
-  appearance: none;
-  background-color: var(--background-shade);
   border: none;
   border-radius: var(--border-radius);
   color: inherit;
-  color-scheme: dark;
   height: 2rem;
   margin: 0.5rem 1rem;
+  padding: 0 2em;
+}
+
+.task-submit-btn,
+.add-list-btn {
+  background-color: var(--accent-color);
+  padding: 0 2em;
+  cursor: pointer;
+}
+
+/* MODAL */
+
+.todo-dialog {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.todo-form {
+  background-color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--padding);
+  max-width: 400px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+}
+
+button, input[type="submit"] {
+  padding: 8px;
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.cancel-btn {
+  background-color: var(--background-hover);
+  color: var(--text-color);
+  width: 100%;
+}
+
+.cancel-btn:hover {
+  opacity: 75%;
 }
 
 .task-submit-btn,
