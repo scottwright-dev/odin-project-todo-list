@@ -2,7 +2,7 @@ import { saveData } from './storageModel';
 
 const allLists = [
     {
-      name: 'default list',
+      name: 'My List',
       tasks: []
     }
   ];
@@ -12,7 +12,7 @@ const allLists = [
   }  
   
   export function createList(listName) {
-    if (listName === 'default list') {
+    if (listName === 'My List') {
       return allLists[0];
     }
     const taskList = [];

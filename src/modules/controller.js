@@ -91,10 +91,10 @@ export function handleNewListButtonClick() {
       });
     } else {
       // If there's no stored data, add a default list and a dummy task
-      addListToListManager('default list');
-      updateListTitle('default list');
-      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium', 'default list');
-      const defaultList = getAllLists().find(list => list.name === 'default list');
+      addListToListManager('My List');
+      updateListTitle('My List');
+      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium', 'My list');
+      const defaultList = getAllLists().find(list => list.name === 'My List');
       defaultList?.tasks.push(defaultTask);
       renderTaskList(defaultList?.tasks);
     }

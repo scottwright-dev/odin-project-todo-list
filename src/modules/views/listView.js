@@ -98,7 +98,7 @@ export function updateListTitle(listName) {
   
     listItem.appendChild(deleteBtn);
   
-    if (listName === 'default list') {
+    if (listName === 'My List') {
       listManagerList.insertBefore(listItem, listManagerList.firstChild);
     } else {
       listManagerList.appendChild(listItem);
