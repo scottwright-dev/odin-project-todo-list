@@ -139,6 +139,11 @@ ul {
   padding: 1.25rem;
 }
 
+.list-item:hover {
+  cursor: pointer;
+  color: var(--accent-lighter);
+}
+
 .task-text-title {
   font-weight: bold;
 }
