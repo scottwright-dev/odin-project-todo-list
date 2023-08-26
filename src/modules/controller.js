@@ -70,8 +70,8 @@ export function handleEditButtonClick(task) {
   });
 }
 
-export function handleAddListButtonClick() {
-  const addListButton = document.querySelector('.create-new-list-btn');
+export function handleNewListButtonClick() {
+  const addListButton = document.querySelector('.new-list-btn');
   addListButton.addEventListener('click', () => {
       renderListInput();
   });
@@ -79,7 +79,7 @@ export function handleAddListButtonClick() {
 
   export function initialise() {
     handleAddTaskButtonClick();
-    handleAddListButtonClick();
+    handleNewListButtonClick();
   
     // Load data from local storage and render it
     const storedData = loadData();

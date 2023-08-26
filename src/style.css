@@ -209,13 +209,12 @@ ul {
   border-radius: var(--border-radius);
   color: var(--background-color);
   height: 2rem;
-  margin: 0.5rem 1rem;
 }
 
 /* BUTTONS */
 
 .add-task-btn,
-.create-new-list-btn {
+.new-list-btn {
   background-image: url('./assets/icons/add-circle-outline.svg');
   background-repeat: no-repeat;
   background-position: left center;
@@ -228,14 +227,7 @@ ul {
   filter: var(--filter);
 }
 
-.add-task-btn:hover,
-.create-new-list-btn:hover,
-.task-submit-btn:hover,
-.add-list-btn:hover {
-  cursor: pointer;
-}
-
-.create-new-list-btn {
+.new-list-btn {
   filter: invert(94%) sepia(34%) saturate(3075%) hue-rotate(198deg) brightness(97%) contrast(200%);
 }
 
@@ -271,6 +263,7 @@ input.list-item-checkbox:hover {
 .add-list-btn {
   background-color: var(--accent-color);
   padding: 0 2em;
+  cursor: pointer;
 }
 
 /* MODAL */

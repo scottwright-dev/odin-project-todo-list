@@ -128,7 +128,7 @@ export function updateListTitle(listName) {
     input.classList.add('list-name-input');
   
     const addListBtn = document.createElement('button');
-    addListBtn.textContent = 'Create List';
+    addListBtn.textContent = 'New List';
     addListBtn.classList.add('add-list-btn');
   
     const inputContainer = document.createElement('div');
