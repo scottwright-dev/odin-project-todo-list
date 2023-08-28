@@ -252,7 +252,7 @@ ul {
   border-radius: var(--border-radius);
   margin: 1rem;
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   width: 8.5rem;
 }
@@ -276,7 +276,6 @@ input.list-item-checkbox:hover {
 }
 
 .task-title-input,
-.task-description-input,
 .task-dueDate-input,
 .task-submit-btn,
 .add-list-btn {
@@ -288,60 +287,14 @@ input.list-item-checkbox:hover {
   padding: 0 2em;
 }
 
-.task-submit-btn,
-.add-list-btn {
-  background-color: var(--accent-color);
-  padding: 0 2em;
-  cursor: pointer;
-}
 
-/* MODAL */
-
-.todo-dialog {
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--border-radius);
+.task-description-input {
   border: none;
-}
-
-.todo-form {
-  background-color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--padding);
-  max-width: 400px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  margin-bottom: 20px;
   border-radius: var(--border-radius);
-}
-
-button, input[type="submit"] {
-  padding: 8px;
-  background-color: var(--accent-color);
-  border: none;
-  color: white;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.cancel-btn {
-  background-color: var(--background-hover);
-  color: var(--text-color);
+  color: inherit;
+  margin: 0.5rem 1rem;
+  padding: 0.25em;
   width: 100%;
-}
-
-.cancel-btn:hover {
-  opacity: 75%;
 }
 
 .task-submit-btn,
@@ -371,18 +324,18 @@ button, input[type="submit"] {
 
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   font-weight: bold;
 }
 
 input {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   border-radius: var(--border-radius);
 }
 
 button, input[type="submit"] {
-  padding: 8px;
+  padding: 0.5rem;
   background-color: var(--accent-color);
   border: none;
   color: white;
