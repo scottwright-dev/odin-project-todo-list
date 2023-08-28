@@ -2,16 +2,26 @@ import { getAllLists } from '../models/listModel';
 
 // RENDER TASK UI ELEMENTS //
 
-function createInputLabel(text, inputType, inputClass, isRequired = false) {
+function createInputLabel(text, inputType, inputClass, isRequired = false, isTextArea = false) {
   const label = document.createElement('label');
   label.textContent = text;
-  const input = document.createElement('input');
-  input.type = inputType;
+  
+  let input;
+  if (isTextArea) {
+    input = document.createElement('textarea');
+    input.rows = 5; 
+    input.cols = 8;
+  } else {
+    input = document.createElement('input');
+    input.type = inputType;
+  }
+  
   input.classList.add(inputClass);
   if (isRequired) {
-    input.setAttribute('required', '')
+    input.setAttribute('required', '');
   }
   label.appendChild(input);
+  
   return label;
 }
 
@@ -58,7 +68,7 @@ export function createToDoForm() {
   const titleLabel = createInputLabel('Title', 'text', 'task-title-input', true);
   form.appendChild(titleLabel);
 
-  const descriptionLabel = createInputLabel('Description', 'text', 'task-description-input');
+  const descriptionLabel = createInputLabel('Description', 'text', 'task-description-input', false, true);
   form.appendChild(descriptionLabel);
 
   const dueDateLabel = createInputLabel('Date', 'date', 'task-dueDate-input');
