@@ -73,7 +73,7 @@ export function openDetailsDialog(task) {
   listSelect.value = task.list;
 
   const submitBtn = formContainer.querySelector('.task-submit-btn');
-  submitBtn.value = 'update task';
+  submitBtn.value = 'Update Task';
   submitBtn.removeEventListener('click', addTaskToList);
   submitBtn.addEventListener('click', () => updateTaskDetails(task));
 
