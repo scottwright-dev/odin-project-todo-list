@@ -274,6 +274,17 @@ ul {
   line-height: 1;
 }
 
+button, input[type="submit"] {
+  padding: 0.5rem;
+  border: none;
+  width: 100%;
+  margin: 0 auto;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: var(--accent-lighter);
+}
+
 /* NEW LIST & NEW TASK BTN POSITIONING */ 
 
 .add-task-btn,
@@ -292,19 +303,9 @@ ul {
 
 /* BUTTONS - MODAL*/
 
-button, input[type="submit"] {
-  padding: 0.5rem;
-  border: none;
-}
-
-button:hover, input[type="submit"]:hover {
-  background-color: var(--accent-lighter);
-}
-
 .cancel-btn {
   background-color: var(--background-hover);
   color: var(--text-color);
-  width: 100%;
 }
 
 .cancel-btn:hover {
@@ -361,13 +362,33 @@ input.list-item-checkbox:hover {
   max-width: 400px;
 }
 
-/* MODAL TEXT STYLING */
+.todo-form label,
+select {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 0.75rem;
+}
 
 label {
+  display: block;
   font-weight: bold;
+  text-align: left;
 }
 
 .task-priority-select,
 .task-list-select {
+  font-weight: var(--font-weight);
+}
+
+.todo-form input[type="text"],
+.todo-form input[type="date"],
+.todo-form textarea,
+.todo-form select {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  color: inherit;
   font-weight: var(--font-weight);
 }
