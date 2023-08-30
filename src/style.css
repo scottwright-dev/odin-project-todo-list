@@ -386,7 +386,7 @@ label {
 .todo-form select {
   width: 100%;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 0.125rem 0.25rem;
   border: var(--border);
   border-radius: var(--border-radius);
   color: inherit;
