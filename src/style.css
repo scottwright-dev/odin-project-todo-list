@@ -379,16 +379,3 @@ label {
 .task-list-select {
   font-weight: var(--font-weight);
 }
-
-.todo-form input[type="text"],
-.todo-form input[type="date"],
-.todo-form textarea,
-.todo-form select {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  color: inherit;
-  font-weight: var(--font-weight);
-}
