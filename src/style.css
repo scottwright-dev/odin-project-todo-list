@@ -4,7 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /* outline: 2px solid red;   */
+  outline: 2px solid red;  
 }
 
 * {
@@ -141,6 +141,7 @@ ul {
 .list-item-text-container {
   flex-grow: 1;
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .list-item {
@@ -173,7 +174,7 @@ ul {
 .list-item-checkbox {
   margin-right: 1rem;
   appearance: none;
-  border: var(--border);
+  border: 2px solid var(--accent-color);
   border-radius: 50%;
   width: 1.25rem;
   min-width: 1.25rem;
