@@ -246,8 +246,8 @@ ul {
 .list-manager-container {
   position: relative;
   flex: 1; 
-  min-width: 100px; 
-  max-width: 250px; 
+  min-width: 150px; 
+  max-width: 300px; 
   background-color: var(--background-shade);
   border-radius: var(--border-radius);
 }
@@ -298,7 +298,7 @@ button:hover, input[type="submit"]:hover {
 .add-task-btn,
 .new-list-btn {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
 }
 
