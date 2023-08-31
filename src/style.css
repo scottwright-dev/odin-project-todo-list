@@ -400,3 +400,9 @@ label {
   color: inherit;
   font-weight: var(--font-weight);
 }
+
+/* MODAL BG BLUR */
+
+.blurred-background {
+  filter: blur(5px);
+}

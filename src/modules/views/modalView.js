@@ -5,6 +5,18 @@ import { renderTaskList } from './listView';
 import { getAllLists } from '../models/listModel';
 import { addTaskToList } from '../controller';
 
+// MODAL BG BLUR //
+
+function addBlur() {
+  const mainContent = document.querySelector('.main-content');
+  mainContent.classList.add('blurred-background');
+}
+
+function removeBlur() {
+  const mainContent = document.querySelector('.main-content');
+  mainContent.classList.remove('blurred-background');
+}
+
 // OPEN TASK MODAL //
 
 export function openDialog() {
@@ -37,8 +49,11 @@ export function openDialog() {
 
   dialog.showModal();
 
+  addBlur();
+
   dialog.addEventListener('close', () => {
     document.body.removeChild(dialog);
+    removeBlur();
   });
 
   const cancelBtn = createCancelBtn(() => {
@@ -89,7 +104,10 @@ export function openDetailsDialog(task) {
   
   dialog.showModal();
 
+  addBlur();
+
   dialog.addEventListener('close', () => {
     document.body.removeChild(dialog);
+    removeBlur();
   });
 }
