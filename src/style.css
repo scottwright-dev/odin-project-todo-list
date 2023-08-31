@@ -4,7 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  outline: 2px solid red;  
+  /* outline: 2px solid red;   */
 }
 
 * {
@@ -66,7 +66,7 @@ ul {
   --letter-spacing: 0.05rem;
   --padding: 1.5rem;
   --text-color: #F3F3F3;
-  --transition: transform 0.2s ease-in-out;
+  --transition: transform 0.1s ease-in-out;
 }
 
 /* LAYOUT */
@@ -232,6 +232,13 @@ ul {
 .list-item-del-btn,
 .list-delete-btn {
   filter: var(--filter);
+}
+
+.list-item-del-btn:hover,
+.list-delete-btn:hover {
+  filter: brightness(0) saturate(100%) invert(57%) sepia(79%) saturate(198%) hue-rotate(178deg) brightness(104%) contrast(105%);
+  transform: scale(1.2);
+  transition: var(--transition);
 }
 
 /* LIST MANAGER */
