@@ -152,6 +152,10 @@ ul {
   padding: 1rem;
 }
 
+.list-item:last-child {
+  margin-bottom: 4rem;
+}
+
 .list-item:hover {
   cursor: pointer;
   color: var(--accent-lighter);
@@ -298,7 +302,7 @@ button:hover, input[type="submit"]:hover {
 .add-task-btn,
 .new-list-btn {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
 }
 
