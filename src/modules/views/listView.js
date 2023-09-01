@@ -67,18 +67,24 @@ export function updateListTitle(listName) {
     const defaultList = document.querySelector('#default-list');
     defaultList.innerHTML = '';
   
-    taskList.forEach((task, index) => {
-      const taskItem = createListItem(task);
+    if (taskList.length === 0) {
+      const listIsEmpty = document.createElement('p');
+      listIsEmpty.textContent = 'Task list is empty';
+      defaultList.appendChild(listIsEmpty);
+    } else {
+      taskList.forEach((task, index) => {
+        const taskItem = createListItem(task);
   
-      createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
+        createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
   
-      if (task.complete) {
-        taskItem.style.textDecoration = 'line-through';
-      }
+        if (task.complete) {
+          taskItem.style.textDecoration = 'line-through';
+        }
   
-      defaultList.appendChild(taskItem);
-    });
-  }
+        defaultList.appendChild(taskItem);
+      });
+    }
+  }  
   
   // LIST MANAGER RENDERING // 
   
