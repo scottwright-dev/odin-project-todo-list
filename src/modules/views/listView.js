@@ -101,16 +101,18 @@ export function updateListTitle(listName) {
   
     deleteBtn.addEventListener('click', () => {
       listItem.remove();
-      deleteList(listName); 
+      deleteList(listName);
+  
+      if (listManagerList.childElementCount === 0) {
+        const emptyListText = document.createElement('p');
+        emptyListText.textContent = 'You have no lists';
+        emptyListText.classList.add('empty-list-text');
+  
+        listManagerList.appendChild(emptyListText);
+      }
     });
   
     listItem.appendChild(deleteBtn);
-  
-    if (listName === 'My List') {
-      listManagerList.insertBefore(listItem, listManagerList.firstChild);
-    } else {
-      listManagerList.appendChild(listItem);
-    }
   
     const existingList = getAllLists().find(list => list.name === listName);
   
@@ -121,11 +123,24 @@ export function updateListTitle(listName) {
     listItem.addEventListener('click', () => {
       const selectedList = getAllLists().find(list => list.name === listName);
       if (selectedList) {
-          renderTaskList(selectedList.tasks);
-          updateListTitle(listName);
+        renderTaskList(selectedList.tasks);
+        updateListTitle(listName);
       }
     });
-  }  
+  
+    if (getAllLists().length === 0) {
+      const emptyListText = document.createElement('p');
+      emptyListText.textContent = 'You have no lists';
+      emptyListText.classList.add('empty-list-text');
+      listManagerList.appendChild(emptyListText);
+    }
+  
+    if (listName === 'My List') {
+      listManagerList.insertBefore(listItem, listManagerList.firstChild);
+    } else {
+      listManagerList.appendChild(listItem);
+    }
+  }   
   
   export function renderListInput() { 
     const listInputContainer = document.querySelector('#list-input-container');
