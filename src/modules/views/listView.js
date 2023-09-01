@@ -71,7 +71,7 @@ export function updateListTitle(listName) {
         createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
   
         if (task.complete) {
-          taskItem.style.textDecoration = 'line-through';
+          taskItem.classList.add('completed-task-text');
         }
   
         defaultList.appendChild(taskItem);
@@ -97,7 +97,7 @@ export function updateListTitle(listName) {
   
     listItem.appendChild(deleteBtn);
   
-    if (listName === 'My List') {
+    if (listName === 'Tasks') {
       listManagerList.insertBefore(listItem, listManagerList.firstChild);
     } else {
       listManagerList.appendChild(listItem);
