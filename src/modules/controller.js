@@ -93,7 +93,7 @@ export function handleNewListButtonClick() {
       // If there's no stored data, add a default list and a dummy task
       addListToListManager('My List');
       updateListTitle('My List');
-      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium', 'My List');
+      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', '!', 'My List');
       const defaultList = getAllLists().find(list => list.name === 'My List');
       defaultList?.tasks.push(defaultTask);
       renderTaskList(defaultList?.tasks);

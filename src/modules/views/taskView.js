@@ -81,13 +81,16 @@ export function createToDoForm() {
   priorityLabel.appendChild(prioritySelect);
   form.appendChild(priorityLabel);
 
-  const lowPriority = createPriorityOption('low', 'Low');
+  const noPriority = createPriorityOption('', 'None');
+  prioritySelect.appendChild(noPriority);
+
+  const lowPriority = createPriorityOption('!', '!');
   prioritySelect.appendChild(lowPriority);
 
-  const medPriority = createPriorityOption('medium', 'Medium');
+  const medPriority = createPriorityOption('!!', '!!');
   prioritySelect.appendChild(medPriority);
 
-  const highPriority = createPriorityOption('high', 'High');
+  const highPriority = createPriorityOption('!!!', '!!!');
   prioritySelect.appendChild(highPriority);
 
   const listLabel = createListSelect();
