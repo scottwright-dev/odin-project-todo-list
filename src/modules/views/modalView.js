@@ -48,6 +48,7 @@ export function openDialog() {
   document.body.appendChild(dialog);
 
   dialog.showModal();
+  dialog.classList.add('show');
 
   addBlur();
 
