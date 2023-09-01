@@ -237,6 +237,13 @@ ul {
   margin: 0 auto;
 }
 
+.empty-list-text {
+  color: var(--background-hover);
+  font-weight: bold;
+  text-align: center;
+  margin: 8rem 1rem;
+}
+
 /* ICONS */
 
 .list-item-del-btn,
@@ -428,4 +435,17 @@ label {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+@media (max-width: 700px) {
+
+  .list-manager-container {
+    display: none;
+    }
+
+    .main-content {
+      gap: 0;
+  }
+
+
 }

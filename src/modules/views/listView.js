@@ -70,6 +70,8 @@ export function updateListTitle(listName) {
     if (taskList.length === 0) {
       const listIsEmpty = document.createElement('p');
       listIsEmpty.textContent = 'Task list is empty';
+      listIsEmpty.classList.add('empty-list-text');
+
       defaultList.appendChild(listIsEmpty);
     } else {
       taskList.forEach((task, index) => {
