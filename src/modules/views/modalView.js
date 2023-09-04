@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { createToDoForm, createCancelBtn } from './taskView';
 import { createToDoTask, updateTaskDetails } from '../models/taskModel';
-import { renderTaskList } from './listView';
+import { renderTaskList, renderListInput } from './listView';
 import { getAllLists } from '../models/listModel';
 import { addTaskToList } from '../controller';
 
@@ -104,6 +104,30 @@ export function openDetailsDialog(task) {
   document.body.appendChild(dialog);
   
   dialog.showModal();
+
+  addBlur();
+
+  dialog.addEventListener('close', () => {
+    document.body.removeChild(dialog);
+    removeBlur();
+  });
+}
+
+// OPEN LIST INPUT MODAL //
+
+export function openListInputDialog() {
+  const dialog = document.createElement('dialog');
+  dialog.classList.add('todo-dialog');
+
+  const listInputContainer = renderListInput(() => {
+    dialog.close();
+  });
+
+  dialog.appendChild(listInputContainer);
+  document.body.appendChild(dialog);
+
+  dialog.showModal();
+  dialog.classList.add('show');
 
   addBlur();
 

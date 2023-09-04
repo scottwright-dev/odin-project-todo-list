@@ -118,9 +118,7 @@ export function updateListTitle(listName) {
     });
   }  
   
-  export function renderListInput() { 
-    const listInputContainer = document.querySelector('#list-input-container');
-  
+  export function renderListInput(onListAdded) {
     const input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Enter list name';
@@ -135,16 +133,17 @@ export function updateListTitle(listName) {
     inputContainer.appendChild(input);
     inputContainer.appendChild(addListBtn);
   
-    listInputContainer.innerHTML = '';
-    listInputContainer.appendChild(inputContainer);
-  
     addListBtn.addEventListener('click', () => {
       const listName = input.value.trim();
       if (listName) {
         addListToListManager(listName);
         input.value = '';
-
-        inputContainer.remove();
+        onListAdded();
       }
     });
-  }
+  
+    const parentContainer = document.createElement('div');
+    parentContainer.appendChild(inputContainer);
+  
+    return parentContainer;
+  }  

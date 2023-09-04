@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { createToDoTask, updateTaskDetails } from './models/taskModel';
 import { getAllLists, setAllLists } from './models/listModel';
-import { renderTaskList, updateListTitle, renderListInput, addListToListManager } from './views/listView';
-import { openDialog } from './views/modalView';
+import { renderTaskList, updateListTitle, addListToListManager } from './views/listView';
+import { openDialog, openListInputDialog } from './views/modalView';
 import { loadData, saveData } from './models/storageModel';
 
 export function addTaskToList() {
@@ -73,7 +73,7 @@ export function handleEditButtonClick(task) {
 export function handleNewListButtonClick() {
   const addListButton = document.querySelector('.new-list-btn');
   addListButton.addEventListener('click', () => {
-      renderListInput();
+    openListInputDialog()
   });
 }
 
@@ -91,10 +91,10 @@ export function handleNewListButtonClick() {
       });
     } else {
       // If there's no stored data, add a default list and a dummy task
-      addListToListManager('My List');
-      updateListTitle('My List');
-      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', '!', 'My List');
-      const defaultList = getAllLists().find(list => list.name === 'My List');
+      addListToListManager('Tasks');
+      updateListTitle('Tasks');
+      const defaultTask = createToDoTask('Finish Project', 'Tasks');
+      const defaultList = getAllLists().find(list => list.name === 'Tasks');
       defaultList?.tasks.push(defaultTask);
       renderTaskList(defaultList?.tasks);
     }
