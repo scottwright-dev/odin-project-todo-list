@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { createToDoForm, createCancelBtn } from './taskView';
+import { createToDoForm } from './taskView';
 import { createToDoTask, updateTaskDetails } from '../models/taskModel';
 import { renderTaskList, renderListInput } from './listView';
 import { getAllLists } from '../models/listModel';
@@ -23,6 +23,14 @@ export function openDialog() {
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
 
+  const closeIcon = document.createElement('div');
+  closeIcon.classList.add('close-icon');
+  closeIcon.addEventListener('click', () => {
+    dialog.close();
+  });
+
+  dialog.appendChild(closeIcon);
+
   const toDoForm = createToDoForm();
 
   toDoForm.addEventListener('submit', (event) => {
@@ -41,7 +49,6 @@ export function openDialog() {
     selectedList?.tasks.push(addTask);
     renderTaskList(selectedList?.tasks);
 
-    dialog.close();
   });
 
   dialog.appendChild(toDoForm);
@@ -57,11 +64,6 @@ export function openDialog() {
     removeBlur();
   });
 
-  const cancelBtn = createCancelBtn(() => {
-    dialog.close();
-  })
-
-  dialog.appendChild(cancelBtn);
 }
 // UPDATE TASK MODAL //
 
@@ -72,6 +74,14 @@ export function openDetailsDialog(task) {
 
   const formContainer = document.createElement('div');
   formContainer.classList.add('todo-form-container');
+
+  const closeIcon = document.createElement('div');
+  closeIcon.classList.add('close-icon');
+  closeIcon.addEventListener('click', () => {
+    dialog.close();
+  });
+
+  dialog.appendChild(closeIcon);
 
   const toDoForm = createToDoForm();
   formContainer.appendChild(toDoForm);
@@ -92,12 +102,6 @@ export function openDetailsDialog(task) {
   submitBtn.value = 'Save Task';
   submitBtn.removeEventListener('click', addTaskToList);
   submitBtn.addEventListener('click', () => updateTaskDetails(task));
-
-  const cancelBtn = createCancelBtn(() => {
-    dialog.close();
-  })
-
-  formContainer.appendChild(cancelBtn);
 
   dialog.appendChild(formContainer);
   

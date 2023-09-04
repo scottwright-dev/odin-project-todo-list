@@ -50,6 +50,11 @@ ul {
   list-style: none;
 }
 
+dialog {
+  appearance: none;
+  border: none;
+}
+
 :root {
   --accent-color: #5F85DB;
   --accent-lighter: #90B8F8;
@@ -418,6 +423,20 @@ label {
   font-weight: var(--font-weight);
 }
 
+.close-icon {
+  content: "";
+  cursor: pointer;
+  width: 2.25rem;
+  height: 2.25rem;
+  background-image: url(./assets/icons/close-circle-outline.svg);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.25rem;
+  filter: brightness(0) saturate(100%) invert(12%) sepia(4%) saturate(1037%) hue-rotate(177deg) brightness(94%) contrast(89%);
+}
+
 /* MODAL BG BLUR */
 
 .blurred-background {
@@ -446,6 +465,5 @@ label {
     .main-content {
       gap: 0;
   }
-
 
 }
