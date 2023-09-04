@@ -113,7 +113,7 @@ export function openDetailsDialog(task) {
   });
 }
 
-// OPEN LIST INPUT MODAL //
+// CREATE NEW LIST MODAL //
 
 export function openListInputDialog() {
   const dialog = document.createElement('dialog');
