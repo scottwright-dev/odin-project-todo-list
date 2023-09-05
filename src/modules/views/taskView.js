@@ -50,15 +50,6 @@ function createListSelect() {
   return label;
 }
 
-// export function createCancelBtn(onClick) {
-//   const cancelBtn = document.createElement('button');
-//   cancelBtn.textContent = 'Cancel';
-//   cancelBtn.classList.add('cancel-btn');
-//   cancelBtn.addEventListener('click', onClick);
-  
-//   return cancelBtn;
-// }
-
 // RENDER TO-DO TASK FORM USING TASK UI ELEMENTS //
 
 export function createToDoForm() {
