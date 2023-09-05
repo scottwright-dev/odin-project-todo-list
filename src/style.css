@@ -23,11 +23,19 @@ svg {
   max-width: 100%;
 }
 
+button {
+  font: inherit;
+}
+
 input,
-button,
 textarea,
 select {
+  background-color: hsl(0, 0%, 85%);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: inset 0 2px 2px hsla(0, 0%, 0%, 0.15);
   font: inherit;
+  outline: none;
 }
 
 p,
@@ -39,11 +47,6 @@ h5,
 h6 {
   overflow-wrap: break-word;
   letter-spacing: var(--letter-spacing);
-}
-
-select {
-  border: var(--border);
-  border-radius: var(--border-radius);
 }
 
 ul {
@@ -70,14 +73,15 @@ dialog {
   --line-height: 1.5;
   --letter-spacing: 0.05rem;
   --padding: 1.5rem;
-  --text-color: #F3F3F3;
+  --text-color: #f2f2f2;
   --transition: transform 0.1s ease-in-out;
 }
 
 /* LAYOUT */
 
 .container {
-  background: var(--background-color);
+  background-color: #26282b;
+  background-image: url(/src/assets/wiggle.svg);
   color: var(--text-color);
   font-family: var(--font-family);
   line-height: var(--line-height);
@@ -139,7 +143,7 @@ dialog {
 }
 
 
-/* FOCUSED LIST */
+/* TASK LIST */
 
 .default-list-container {
   flex: 3; 
@@ -239,10 +243,12 @@ dialog {
 }
 
 .empty-list-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 1rem;
   color: var(--background-hover);
   font-weight: bold;
-  text-align: center;
-  margin: 8rem 1rem;
 }
 
 /* ICONS */
@@ -278,11 +284,16 @@ dialog {
 
 .list-name-input {
   appearance: none;
-  background-color: var(--text-color);
   border: none;
   border-radius: var(--border-radius);
   color: var(--background-color);
   height: 2rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
 }
 
 /* BUTTONS */
@@ -396,7 +407,7 @@ input.list-item-checkbox:hover {
 }
 
 .todo-form {
-  background-color: var(--text-color);
+  background-color: hsl(0, 0%, 90%);
   color: var(--background-color);
   display: flex;
   flex-direction: column;
@@ -430,7 +441,7 @@ label {
   width: 100%;
   margin: 0 auto;
   padding: 0.125rem 0.25rem;
-  border: var(--border);
+  border: none;
   border-radius: var(--border-radius);
   color: inherit;
   font-weight: var(--font-weight);
@@ -469,14 +480,23 @@ label {
   }
 }
 
+/* MOBILE LAYOUT */
+
 @media (max-width: 700px) {
 
+  .default-list-container {
+    margin: 1rem;
+  }
   .list-manager-container {
     display: none;
     }
 
     .main-content {
       gap: 0;
+  }
+
+  dialog {
+    width: 70%;
   }
 
 }
