@@ -87,13 +87,13 @@ export function openDetailsDialog(task) {
   formContainer.appendChild(toDoForm);
 
   const titleInput = formContainer.querySelector('.task-title-input');
-  const descriptionInput = formContainer.querySelector('.task-description-input');
+  const notesInput = formContainer.querySelector('.task-notes-input');
   const dueDateInput = formContainer.querySelector('.task-dueDate-input');
   const prioritySelect = formContainer.querySelector('.task-priority-select');
   const listSelect = formContainer.querySelector('.task-list-select');
 
   titleInput.value = task.task;
-  descriptionInput.value = task.description;
+  notesInput.value = task.notes;
   dueDateInput.value = task.dueDate;
   prioritySelect.value = task.priority; 
   listSelect.value = task.list;
