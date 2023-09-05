@@ -311,23 +311,6 @@ dialog {
   line-height: 1;
 }
 
-.new-list-btn {
-  background-color: var(--background-shade);
-  outline: 2px solid var(--accent-color);
-  border-radius: var(--border-radius);
-  color: var(--accent-color);
-  margin: 1rem;
-  width: 7rem;
-  line-height: 1;
-}
-
-.new-list-btn:hover {
-  color: var(--text-color);
-  outline: var(--accent-lighter);
-}
-
-
-
 button, input[type="submit"] {
   padding: 0.5rem;
   border: none;
