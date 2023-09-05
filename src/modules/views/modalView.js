@@ -37,12 +37,12 @@ export function openDialog() {
     event.preventDefault();
 
     const title = toDoForm.querySelector('.task-title-input').value;
-    const description = toDoForm.querySelector('.task-description-input').value;
+    const notes = toDoForm.querySelector('.task-notes-input').value;
     const dueDate = toDoForm.querySelector('.task-dueDate-input').value;
     const priority = toDoForm.querySelector('.task-priority-select').value;
     const listName = toDoForm.querySelector('.task-list-select').value;
 
-    const addTask = createToDoTask(title, description, dueDate, priority, listName);
+    const addTask = createToDoTask(title, notes, dueDate, priority, listName);
 
     const selectedList = getAllLists().find(list => list.name === listName);
 
@@ -122,6 +122,14 @@ export function openDetailsDialog(task) {
 export function openListInputDialog() {
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
+
+  const closeIcon = document.createElement('div');
+  closeIcon.classList.add('close-icon');
+  closeIcon.addEventListener('click', () => {
+    dialog.close();
+  });
+
+  dialog.appendChild(closeIcon);
 
   const listInputContainer = renderListInput(() => {
     dialog.close();

@@ -13,12 +13,12 @@ export function addTaskToList() {
       event.preventDefault();
 
       const title = document.querySelector('.task-title-input').value;
-      const description = document.querySelector('.task-description-input').value;
+      const notes = document.querySelector('.task-notes-input').value;
       const dueDate = document.querySelector('.task-dueDate-input').value;
       const priority = document.querySelector('.task-priority-select').value;
       const listName = document.querySelector('.task-list-select').value;
 
-      const addTask = createToDoTask(title, description, dueDate, priority);
+      const addTask = createToDoTask(title, notes, dueDate, priority);
 
       const selectedList = getAllLists().find(list => list.name === listName);
 

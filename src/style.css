@@ -387,7 +387,7 @@ input.list-item-checkbox:hover {
 }
 
 
-.task-description-input {
+.task-notes-input {
   border: var(--border);
   border-radius: var(--border-radius);
   color: inherit;

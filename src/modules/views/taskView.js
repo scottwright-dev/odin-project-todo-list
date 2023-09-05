@@ -59,8 +59,8 @@ export function createToDoForm() {
   const titleLabel = createInputLabel('Title', 'text', 'task-title-input', true);
   form.appendChild(titleLabel);
 
-  const descriptionLabel = createInputLabel('Description', 'text', 'task-description-input', false, true);
-  form.appendChild(descriptionLabel);
+  const notesLabel = createInputLabel('Notes', 'text', 'task-notes-input', false, true);
+  form.appendChild(notesLabel);
 
   const dueDateLabel = createInputLabel('Date', 'date', 'task-dueDate-input');
   form.appendChild(dueDateLabel);

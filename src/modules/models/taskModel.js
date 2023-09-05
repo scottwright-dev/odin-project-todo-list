@@ -6,9 +6,9 @@ import { saveData } from './storageModel';
 
 // TO DO TASK OBJECT //
 
-export const createToDoTask = (task, description, dueDate, priority, list) => ({
+export const createToDoTask = (task, notes, dueDate, priority, list) => ({
     task,
-    description,
+    notes,
     dueDate,
     priority,
     list,
@@ -21,7 +21,7 @@ export function updateTaskDetails(task) {
     const formContainer = document.querySelector('.todo-form-container');
   
     const titleInput = formContainer.querySelector('.task-title-input');
-    const descriptionInput = formContainer.querySelector('.task-description-input');
+    const notesInput = formContainer.querySelector('.task-notes-input');
     const dueDateInput = formContainer.querySelector('.task-dueDate-input');
     const prioritySelect = formContainer.querySelector('.task-priority-select');
     const listSelect = formContainer.querySelector('.task-list-select');
@@ -29,7 +29,7 @@ export function updateTaskDetails(task) {
     const oldListName = task.list;
   
     task.task = titleInput.value;
-    task.description = descriptionInput.value;
+    task.notesInput = notesInput.value;
     task.dueDate = dueDateInput.value;
     task.priority = prioritySelect.value;
     task.list = listSelect.value;
