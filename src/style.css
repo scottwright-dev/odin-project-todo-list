@@ -172,12 +172,8 @@ dialog {
   color: var(--accent-lighter);
 }
 
-.task-text-title {
-  font-weight: bold;
-}
-
 .task-text {
-  opacity: 50%;
+  opacity: 57%;
 }
 
 .list-title-text {
@@ -269,7 +265,7 @@ dialog {
   position: relative;
   flex: 1; 
   min-width: 150px; 
-  max-width: 300px; 
+  max-width: 250px; 
   background-color: var(--background-shade);
   border-radius: var(--border-radius);
 }
