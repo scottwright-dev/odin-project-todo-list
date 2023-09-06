@@ -278,12 +278,8 @@ dialog {
   border-radius: var(--border-radius);
   color: var(--background-color);
   height: 2rem;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* BUTTONS */
@@ -326,6 +322,20 @@ button:hover, input[type="submit"]:hover {
 .task-submit-btn:hover,
 .add-task-btn:hover {
   background-color: var(--accent-lighter);
+}
+
+/* NEW LIST MODAL */ 
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.add-list-btn {
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* TASK FORM */
