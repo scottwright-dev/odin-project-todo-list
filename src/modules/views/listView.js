@@ -58,11 +58,17 @@ export function updateListTitle(listName) {
     const defaultList = document.querySelector('#default-list');
     defaultList.innerHTML = '';
   
-    if (taskList.length === 0) {
+    if (!taskList) {
       const listIsEmpty = document.createElement('p');
       listIsEmpty.textContent = 'Task list is empty';
       listIsEmpty.classList.add('empty-list-text');
-
+  
+      defaultList.appendChild(listIsEmpty);
+    } else if (taskList.length === 0) {
+      const listIsEmpty = document.createElement('p');
+      listIsEmpty.textContent = 'Task list is empty';
+      listIsEmpty.classList.add('empty-list-text');
+  
       defaultList.appendChild(listIsEmpty);
     } else {
       taskList.forEach((task, index) => {
@@ -77,7 +83,7 @@ export function updateListTitle(listName) {
         defaultList.appendChild(taskItem);
       });
     }
-  }  
+  }    
   
   // LIST MANAGER RENDERING // 
   
