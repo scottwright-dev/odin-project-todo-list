@@ -33,6 +33,12 @@ export function openDialog() {
 
   const toDoForm = createToDoForm();
 
+    const currentListTitle = document.querySelector('.list-title-text').textContent;
+    const listSelectInput = toDoForm.querySelector('.task-list-select');
+    if (listSelectInput) {
+      listSelectInput.value = currentListTitle;
+    }
+
   toDoForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
