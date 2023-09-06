@@ -134,7 +134,7 @@ export function updateListTitle(listName) {
     addListBtn.classList.add('add-list-btn');
   
     const inputContainer = document.createElement('div');
-    inputContainer.classList.add('input-container');
+    inputContainer.classList.add('new-list-modal');
     inputContainer.appendChild(listNameLabel);
     inputContainer.appendChild(addListBtn);
   
@@ -147,8 +147,5 @@ export function updateListTitle(listName) {
       }
     });
   
-    const parentContainer = document.createElement('div');
-    parentContainer.appendChild(inputContainer);
-  
-    return parentContainer;
-}
+    return inputContainer;
+  }  
