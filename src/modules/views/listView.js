@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { openDetailsDialog } from './modalView';
 import { deleteTask } from '../controller';
-import { createCheckbox } from './taskView';
+import { createCheckbox, createInputLabel } from './taskView';
 import { deleteList, createList, getAllLists } from '../models/listModel';
 import { formatDate } from '../dateUtility';
 
@@ -125,18 +125,17 @@ export function updateListTitle(listName) {
   }  
   
   export function renderListInput(onListAdded) {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = 'Enter list name';
-    input.classList.add('list-name-input');
+    const listNameLabel = createInputLabel('List Name', 'text', 'list-name-input', true);
+    
+    const input = listNameLabel.lastChild;
   
     const addListBtn = document.createElement('button');
-    addListBtn.textContent = 'New List';
+    addListBtn.textContent = 'Add List';
     addListBtn.classList.add('add-list-btn');
   
     const inputContainer = document.createElement('div');
     inputContainer.classList.add('input-container');
-    inputContainer.appendChild(input);
+    inputContainer.appendChild(listNameLabel);
     inputContainer.appendChild(addListBtn);
   
     addListBtn.addEventListener('click', () => {
@@ -152,4 +151,4 @@ export function updateListTitle(listName) {
     parentContainer.appendChild(inputContainer);
   
     return parentContainer;
-  }  
+}

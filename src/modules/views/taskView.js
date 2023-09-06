@@ -2,7 +2,7 @@ import { getAllLists } from '../models/listModel';
 
 // RENDER TASK UI ELEMENTS //
 
-function createInputLabel(text, inputType, inputClass, isRequired = false, isTextArea = false) {
+export function createInputLabel(text, inputType, inputClass, isRequired = false, isTextArea = false) {
   const label = document.createElement('label');
   label.textContent = text;
   
