@@ -94,4 +94,5 @@ export function handleNewListButtonClick() {
       addListToListManager('Tasks');
       updateListTitle('Tasks');
     }
+    document.querySelector('body').style.visibility = 'visible';
   }  
