@@ -29,7 +29,7 @@ export function updateTaskDetails(task) {
     const oldListName = task.list;
   
     task.task = titleInput.value;
-    task.notesInput = notesInput.value;
+    task.notes = notesInput.value;
     task.dueDate = dueDateInput.value;
     task.priority = prioritySelect.value;
     task.list = listSelect.value;
