@@ -2,7 +2,7 @@
 import { createToDoTask, updateTaskDetails } from './models/taskModel';
 import { getAllLists, setAllLists } from './models/listModel';
 import { renderTaskList, updateListTitle, addListToListManager } from './views/listView';
-import { openDialog, openListInputDialog } from './views/modalView';
+import { openDialog, openDetailsDialog, openListInputDialog } from './views/modalView';
 import { loadData, saveData } from './models/storageModel';
 
 export function addTaskToList() {
@@ -57,7 +57,7 @@ export function handleAddTaskButtonClick() {
 }
 
 export function handleEditButtonClick(task) {
-  openDialog();
+  openDetailsDialog(task);
 
   const form = document.querySelector('.todo-form');
   form.addEventListener('submit', (event) => {

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { openDetailsDialog } from './modalView';
-import { deleteTask } from '../controller';
+import { deleteTask, handleEditButtonClick } from '../controller';
 import { createCheckbox, createInputLabel } from './taskView';
 import { deleteList, createList, getAllLists } from '../models/listModel';
 import { formatDate } from '../dateUtility';
@@ -53,6 +53,19 @@ export function updateListTitle(listName) {
   
     taskItem.appendChild(deleteBtn);
   }
+
+  export function createEditBtn(taskItem, task, onEdit) {
+    const editBtn = document.createElement('div');
+    editBtn.classList.add('list-item-edit-btn');
+    editBtn.setAttribute('aria-label', 'Edit task');
+  
+    editBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      onEdit(task);
+    });
+  
+    taskItem.appendChild(editBtn);
+  }   
   
   export function renderTaskList(taskList) {
     const defaultList = document.querySelector('#default-list');
@@ -73,6 +86,8 @@ export function updateListTitle(listName) {
     } else {
       taskList.forEach((task, index) => {
         const taskItem = createListItem(task);
+
+        createEditBtn(taskItem, task, (taskToEdit) => handleEditButtonClick(taskToEdit));
   
         createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
   
