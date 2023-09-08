@@ -76,7 +76,7 @@ dialog {
 
 .container {
   background-color: #26282b;
-  background-image: url(/src/assets/wiggle.svg);
+  background-image: url(/src/assets/img/wiggle.svg);
   color: var(--text-color);
   font-family: var(--font-family);
   line-height: var(--line-height);
