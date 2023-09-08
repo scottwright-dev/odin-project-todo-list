@@ -245,6 +245,11 @@ input.list-item-checkbox:hover {
   border-radius: var(--border-radius);
 }
 
+.list-edit-btn {
+  display: flex;
+  flex-grow: 1;
+}
+
 /* ICONS */
 
 .list-item-del-btn,
@@ -257,7 +262,7 @@ input.list-item-checkbox:hover {
 .list-item-del-btn:hover,
 .list-delete-btn:hover,
 .list-item-edit-btn:hover,
-.list-edit-btn {
+.list-edit-btn:hover {
   filter: var(--filter);
   transition: var(--transition);
 }
