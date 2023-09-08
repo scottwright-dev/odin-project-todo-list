@@ -81,7 +81,6 @@ export function handleNewListButtonClick() {
     handleAddTaskButtonClick();
     handleNewListButtonClick();
   
-    // Load data from local storage and render it
     const storedData = loadData();
     if (storedData && storedData.length > 0) {
       setAllLists(storedData);
@@ -90,9 +89,9 @@ export function handleNewListButtonClick() {
         addListToListManager(list.name);
       });
     } else {
-      // If there's no stored data, add a default list and a dummy task
       addListToListManager('Tasks');
       updateListTitle('Tasks');
+      renderTaskList([]);
     }
     document.querySelector('body').style.visibility = 'visible';
   }  
