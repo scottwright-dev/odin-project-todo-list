@@ -234,6 +234,12 @@ input.list-item-checkbox:hover {
   font-weight: bold;
 }
 
+.list-item:hover > span,
+.list-item-text-container:hover > .task-text-title,
+.list-item-text-container:hover > .task-text {
+  color: var(--accent-color);
+}
+
 /* LIST DISPLAY */
 
 .list-manager-container {
