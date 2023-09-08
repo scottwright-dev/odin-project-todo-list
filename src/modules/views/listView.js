@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { openDetailsDialog } from './modalView';
+import { openDetailsDialog, openListInputDialog } from './modalView';
 import { deleteTask, handleEditButtonClick } from '../controller';
 import { createCheckbox, createInputLabel } from './taskView';
 import { deleteList, createList, getAllLists } from '../models/listModel';
@@ -105,8 +105,11 @@ export function updateListTitle(listName) {
   export function addListToListManager(listName) {
     const listManagerList = document.querySelector('#list-manager-list');
     const listItem = document.createElement('li');
-    listItem.textContent = listName;
     listItem.classList.add('list-item');
+
+    const listContent = document.createElement('span');
+    listContent.textContent = listName;
+    listItem.appendChild(listContent);
   
     const deleteBtn = document.createElement('div');
     deleteBtn.classList.add('list-delete-btn');
@@ -115,7 +118,15 @@ export function updateListTitle(listName) {
       listItem.remove();
       deleteList(listName); 
     });
+
+    const editBtn = document.createElement('div');
+    editBtn.classList.add('list-edit-btn');
   
+    editBtn.addEventListener('click', () => {
+      openListInputDialog(listName);
+    });
+    
+    listItem.appendChild(editBtn);
     listItem.appendChild(deleteBtn);
   
     if (listName === 'Tasks') {
@@ -137,17 +148,18 @@ export function updateListTitle(listName) {
           updateListTitle(listName);
       }
     });
-  }  
+} 
   
-  export function renderListInput(onListAdded) {
+  export function renderListInput(onListAdded, currentListName = '') {
     const listNameLabel = createInputLabel('List Name', 'text', 'list-name-input', true);
     
     const input = listNameLabel.lastChild;
-  
+    input.value = currentListName;
+    
     const addListBtn = document.createElement('button');
-    addListBtn.textContent = 'Add List';
+    addListBtn.textContent = currentListName ? 'Save List' : 'Add List';
     addListBtn.classList.add('add-list-btn');
-  
+    
     const inputContainer = document.createElement('div');
     inputContainer.classList.add('new-list-modal');
     inputContainer.appendChild(listNameLabel);
@@ -156,9 +168,8 @@ export function updateListTitle(listName) {
     addListBtn.addEventListener('click', () => {
       const listName = input.value.trim();
       if (listName) {
-        addListToListManager(listName);
+        onListAdded(listName, currentListName);
         input.value = '';
-        onListAdded();
       }
     });
   

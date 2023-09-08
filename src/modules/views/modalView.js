@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { createToDoForm } from './taskView';
 import { createToDoTask, updateTaskDetails } from '../models/taskModel';
-import { renderTaskList, renderListInput } from './listView';
-import { getAllLists } from '../models/listModel';
+import { renderTaskList, renderListInput, addListToListManager } from './listView';
+import { getAllLists, renameList } from '../models/listModel';
 import { addTaskToList } from '../controller';
 
 // MODAL BG BLUR //
@@ -125,7 +125,7 @@ export function openDetailsDialog(task) {
 
 // CREATE NEW LIST MODAL //
 
-export function openListInputDialog() {
+export function openListInputDialog(currentListName = '') {
   const dialog = document.createElement('dialog');
   dialog.classList.add('todo-dialog');
 
@@ -137,9 +137,14 @@ export function openListInputDialog() {
 
   dialog.appendChild(closeIcon);
 
-  const listInputContainer = renderListInput(() => {
+  const listInputContainer = renderListInput((newListName, oldListName) => {
+    if (oldListName) {
+      renameList(oldListName, newListName);
+    } else {
+      addListToListManager(newListName);
+    }
     dialog.close();
-  });
+  }, currentListName);
 
   dialog.appendChild(listInputContainer);
   document.body.appendChild(dialog);
