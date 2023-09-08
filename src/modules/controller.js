@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { createToDoTask, updateTaskDetails } from './models/taskModel';
 import { getAllLists, setAllLists } from './models/listModel';
-import { renderTaskList, updateListTitle, renderListInput, addListToListManager } from './views/listView';
-import { openDialog } from './views/modalView';
+import { renderTaskList, updateListTitle, addListToListManager } from './views/listView';
+import { openDialog, openDetailsDialog, openListInputDialog } from './views/modalView';
 import { loadData, saveData } from './models/storageModel';
 
 export function addTaskToList() {
@@ -13,12 +13,12 @@ export function addTaskToList() {
       event.preventDefault();
 
       const title = document.querySelector('.task-title-input').value;
-      const description = document.querySelector('.task-description-input').value;
+      const notes = document.querySelector('.task-notes-input').value;
       const dueDate = document.querySelector('.task-dueDate-input').value;
       const priority = document.querySelector('.task-priority-select').value;
       const listName = document.querySelector('.task-list-select').value;
 
-      const addTask = createToDoTask(title, description, dueDate, priority);
+      const addTask = createToDoTask(title, notes, dueDate, priority);
 
       const selectedList = getAllLists().find(list => list.name === listName);
 
@@ -57,7 +57,7 @@ export function handleAddTaskButtonClick() {
 }
 
 export function handleEditButtonClick(task) {
-  openDialog();
+  openDetailsDialog(task);
 
   const form = document.querySelector('.todo-form');
   form.addEventListener('submit', (event) => {
@@ -73,7 +73,7 @@ export function handleEditButtonClick(task) {
 export function handleNewListButtonClick() {
   const addListButton = document.querySelector('.new-list-btn');
   addListButton.addEventListener('click', () => {
-      renderListInput();
+    openListInputDialog()
   });
 }
 
@@ -81,7 +81,6 @@ export function handleNewListButtonClick() {
     handleAddTaskButtonClick();
     handleNewListButtonClick();
   
-    // Load data from local storage and render it
     const storedData = loadData();
     if (storedData && storedData.length > 0) {
       setAllLists(storedData);
@@ -90,12 +89,9 @@ export function handleNewListButtonClick() {
         addListToListManager(list.name);
       });
     } else {
-      // If there's no stored data, add a default list and a dummy task
-      addListToListManager('My List');
-      updateListTitle('My List');
-      const defaultTask = createToDoTask('Task Title', 'Task Description', '2023-08-03', 'medium', 'My List');
-      const defaultList = getAllLists().find(list => list.name === 'My List');
-      defaultList?.tasks.push(defaultTask);
-      renderTaskList(defaultList?.tasks);
+      addListToListManager('Tasks');
+      updateListTitle('Tasks');
+      renderTaskList([]);
     }
+    document.querySelector('body').style.visibility = 'visible';
   }  

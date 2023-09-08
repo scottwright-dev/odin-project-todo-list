@@ -2,7 +2,7 @@ import { saveData } from './storageModel';
 
 const allLists = [
     {
-      name: 'My List',
+      name: 'Tasks',
       tasks: []
     }
   ];
@@ -12,7 +12,7 @@ const allLists = [
   }  
   
   export function createList(listName) {
-    if (listName === 'My List') {
+    if (listName === 'Tasks') {
       return allLists[0];
     }
     const taskList = [];
@@ -45,3 +45,17 @@ const allLists = [
     allLists.length = 0;
     allLists.push(...newLists);
   }  
+
+  export function renameList(oldListName, newListName) {
+    const lists = getAllLists();
+    const list = lists.find(list => list.name === oldListName);
+    if (list) {
+      list.name = newListName;
+    }
+
+    const listItems = Array.from(document.querySelectorAll('#list-manager-list .list-item'));
+    const listItem = listItems.find(item => item.querySelector('span').textContent.includes(oldListName));
+    if (listItem) {
+      listItem.querySelector('span').textContent = newListName;
+    }
+}

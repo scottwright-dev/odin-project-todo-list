@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
-import { openDetailsDialog } from './modalView';
-import { deleteTask } from '../controller';
-import { createCheckbox } from './taskView';
+import { openDetailsDialog, openListInputDialog } from './modalView';
+import { deleteTask, handleEditButtonClick } from '../controller';
+import { createCheckbox, createInputLabel } from './taskView';
 import { deleteList, createList, getAllLists } from '../models/listModel';
 import { formatDate } from '../dateUtility';
 
@@ -28,20 +28,11 @@ export function updateListTitle(listName) {
     title.classList.add('task-text-title');
     textContainer.appendChild(title);
   
-    const description = document.createElement('p');
-    description.textContent = task.description;
-    description.classList.add('task-text');
-    textContainer.appendChild(description);
   
     const dueDate = document.createElement('p');
     dueDate.textContent = formatDate(task.dueDate); 
     dueDate.classList.add('task-text');
     textContainer.appendChild(dueDate);
-  
-    const priority = document.createElement('p');
-    priority.textContent = task.priority;
-    priority.classList.add('task-text');
-    textContainer.appendChild(priority);
   
     listItem.addEventListener('click', () => {
       openDetailsDialog(task);
@@ -62,31 +53,63 @@ export function updateListTitle(listName) {
   
     taskItem.appendChild(deleteBtn);
   }
+
+  export function createEditBtn(taskItem, task, onEdit) {
+    const editBtn = document.createElement('div');
+    editBtn.classList.add('list-item-edit-btn');
+    editBtn.setAttribute('aria-label', 'Edit task');
+  
+    editBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      onEdit(task);
+    });
+  
+    taskItem.appendChild(editBtn);
+  }   
   
   export function renderTaskList(taskList) {
     const defaultList = document.querySelector('#default-list');
     defaultList.innerHTML = '';
   
-    taskList.forEach((task, index) => {
-      const taskItem = createListItem(task);
+    if (!taskList) {
+      const listIsEmpty = document.createElement('p');
+      listIsEmpty.textContent = 'Task list is empty';
+      listIsEmpty.classList.add('empty-list-text');
   
-      createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
+      defaultList.appendChild(listIsEmpty);
+    } else if (taskList.length === 0) {
+      const listIsEmpty = document.createElement('p');
+      listIsEmpty.textContent = 'Task list is empty';
+      listIsEmpty.classList.add('empty-list-text');
   
-      if (task.complete) {
-        taskItem.style.textDecoration = 'line-through';
-      }
+      defaultList.appendChild(listIsEmpty);
+    } else {
+      taskList.forEach((task, index) => {
+        const taskItem = createListItem(task);
+
+        createEditBtn(taskItem, task, (taskToEdit) => handleEditButtonClick(taskToEdit));
   
-      defaultList.appendChild(taskItem);
-    });
-  }
+        createDeleteBtn(taskItem, () => deleteTask(index, taskList, renderTaskList));
+  
+        if (task.complete) {
+          taskItem.classList.add('completed-task-text');
+        }
+  
+        defaultList.appendChild(taskItem);
+      });
+    }
+  }    
   
   // LIST MANAGER RENDERING // 
   
   export function addListToListManager(listName) {
     const listManagerList = document.querySelector('#list-manager-list');
     const listItem = document.createElement('li');
-    listItem.textContent = listName;
     listItem.classList.add('list-item');
+
+    const listContent = document.createElement('span');
+    listContent.textContent = listName;
+    listItem.appendChild(listContent);
   
     const deleteBtn = document.createElement('div');
     deleteBtn.classList.add('list-delete-btn');
@@ -95,10 +118,18 @@ export function updateListTitle(listName) {
       listItem.remove();
       deleteList(listName); 
     });
+
+    const editBtn = document.createElement('div');
+    editBtn.classList.add('list-edit-btn');
   
+    editBtn.addEventListener('click', () => {
+      openListInputDialog(listName);
+    });
+    
+    listItem.appendChild(editBtn);
     listItem.appendChild(deleteBtn);
   
-    if (listName === 'My List') {
+    if (listName === 'Tasks') {
       listManagerList.insertBefore(listItem, listManagerList.firstChild);
     } else {
       listManagerList.appendChild(listItem);
@@ -117,35 +148,30 @@ export function updateListTitle(listName) {
           updateListTitle(listName);
       }
     });
-  }  
+} 
   
-  export function renderListInput() { 
-    const listInputContainer = document.querySelector('#list-input-container');
-  
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = 'Enter list name';
-    input.classList.add('list-name-input');
-  
+  export function renderListInput(onListAdded, currentListName = '') {
+    const listNameLabel = createInputLabel('List Name', 'text', 'list-name-input', true);
+    
+    const input = listNameLabel.lastChild;
+    input.value = currentListName;
+    
     const addListBtn = document.createElement('button');
-    addListBtn.textContent = 'New List';
+    addListBtn.textContent = currentListName ? 'Save List' : 'Add List';
     addListBtn.classList.add('add-list-btn');
-  
+    
     const inputContainer = document.createElement('div');
-    inputContainer.classList.add('input-container');
-    inputContainer.appendChild(input);
+    inputContainer.classList.add('new-list-modal');
+    inputContainer.appendChild(listNameLabel);
     inputContainer.appendChild(addListBtn);
-  
-    listInputContainer.innerHTML = '';
-    listInputContainer.appendChild(inputContainer);
   
     addListBtn.addEventListener('click', () => {
       const listName = input.value.trim();
       if (listName) {
-        addListToListManager(listName);
+        onListAdded(listName, currentListName);
         input.value = '';
-
-        inputContainer.remove();
       }
     });
-  }
+  
+    return inputContainer;
+  }  

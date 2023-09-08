@@ -2,7 +2,7 @@ import { getAllLists } from '../models/listModel';
 
 // RENDER TASK UI ELEMENTS //
 
-function createInputLabel(text, inputType, inputClass, isRequired = false, isTextArea = false) {
+export function createInputLabel(text, inputType, inputClass, isRequired = false, isTextArea = false) {
   const label = document.createElement('label');
   label.textContent = text;
   
@@ -50,15 +50,6 @@ function createListSelect() {
   return label;
 }
 
-export function createCancelBtn(onClick) {
-  const cancelBtn = document.createElement('button');
-  cancelBtn.textContent = 'Cancel';
-  cancelBtn.classList.add('cancel-btn');
-  cancelBtn.addEventListener('click', onClick);
-  
-  return cancelBtn;
-}
-
 // RENDER TO-DO TASK FORM USING TASK UI ELEMENTS //
 
 export function createToDoForm() {
@@ -68,8 +59,8 @@ export function createToDoForm() {
   const titleLabel = createInputLabel('Title', 'text', 'task-title-input', true);
   form.appendChild(titleLabel);
 
-  const descriptionLabel = createInputLabel('Description', 'text', 'task-description-input', false, true);
-  form.appendChild(descriptionLabel);
+  const notesLabel = createInputLabel('Notes', 'text', 'task-notes-input', false, true);
+  form.appendChild(notesLabel);
 
   const dueDateLabel = createInputLabel('Date', 'date', 'task-dueDate-input');
   form.appendChild(dueDateLabel);
@@ -81,13 +72,16 @@ export function createToDoForm() {
   priorityLabel.appendChild(prioritySelect);
   form.appendChild(priorityLabel);
 
-  const lowPriority = createPriorityOption('low', 'Low');
+  const noPriority = createPriorityOption('', 'None');
+  prioritySelect.appendChild(noPriority);
+
+  const lowPriority = createPriorityOption('!', '!');
   prioritySelect.appendChild(lowPriority);
 
-  const medPriority = createPriorityOption('medium', 'Medium');
+  const medPriority = createPriorityOption('!!', '!!');
   prioritySelect.appendChild(medPriority);
 
-  const highPriority = createPriorityOption('high', 'High');
+  const highPriority = createPriorityOption('!!!', '!!!');
   prioritySelect.appendChild(highPriority);
 
   const listLabel = createListSelect();
@@ -95,7 +89,7 @@ export function createToDoForm() {
 
   const submitBtn = document.createElement('input');
   submitBtn.type = 'submit';
-  submitBtn.value = 'add task';
+  submitBtn.value = 'Add Task';
   submitBtn.classList.add('task-submit-btn');
   form.appendChild(submitBtn);
 

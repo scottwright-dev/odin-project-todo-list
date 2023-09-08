@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="bundle.js" defer></script>
+    <link rel="icon" href="./favicon.svg">
     <title>(todo)</title>
   </head>
-  <body class="container">
+  <body class="container" style="visibility: hidden;">
       <header class="header">
         <h1 class="header-text">todo</h1>
       </header>
@@ -18,11 +19,16 @@
           <ul id="list-manager-list" role="list"></ul>
         </section>
         <div class="default-list-container">
-            <h2 class="list-title-text"></h2>
+            <h2 class="list-title-text">Tasks</h2>
             <button class="add-task-btn" aria-label="Add Task">New Task</button>
           <ul id="default-list" role="list"></ul>
         </div>        
           <div class="render-content"></div>
-      </main>      
+      </main> 
+      <footer>
+        <a href="https://github.com/scottwright-dev/odin-project-todo-list" target="_blank" class="github-icon">
+          <div class="github-logo"></div>
+        </a>
+      </footer>
   </body>
 </html>
