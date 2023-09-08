@@ -123,8 +123,9 @@ export function updateListTitle(listName) {
     editBtn.classList.add('list-edit-btn');
   
     editBtn.addEventListener('click', () => {
-      openListInputDialog(listName);
-    });
+      const currentName = listItem.querySelector('span').textContent;
+      openListInputDialog(currentName);
+    });    
     
     listItem.appendChild(editBtn);
     listItem.appendChild(deleteBtn);
