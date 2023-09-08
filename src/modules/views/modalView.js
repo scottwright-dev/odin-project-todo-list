@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { createToDoForm } from './taskView';
 import { createToDoTask, updateTaskDetails } from '../models/taskModel';
-import { renderTaskList, renderListInput, addListToListManager } from './listView';
+import { renderTaskList, renderListInput, addListToListManager, updateListTitle } from './listView';
 import { getAllLists, renameList } from '../models/listModel';
 import { addTaskToList } from '../controller';
 
@@ -140,6 +140,7 @@ export function openListInputDialog(currentListName = '') {
   const listInputContainer = renderListInput((newListName, oldListName) => {
     if (oldListName) {
       renameList(oldListName, newListName);
+      updateListTitle(newListName);
     } else {
       addListToListManager(newListName);
     }
