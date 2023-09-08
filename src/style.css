@@ -240,6 +240,7 @@ input.list-item-checkbox:hover {
   color: var(--accent-color);
 }
 
+
 /* LIST DISPLAY */
 
 .list-manager-container {
@@ -251,7 +252,7 @@ input.list-item-checkbox:hover {
   border-radius: var(--border-radius);
 }
 
-.list-edit-btn {
+.list-item > span {
   display: flex;
   flex-grow: 1;
 }
