@@ -36,19 +36,16 @@ export function updateTaskDetails(task) {
   
     const oldList = getAllLists().find(list => list.name === oldListName);
     const newList = getAllLists().find(list => list.name === task.list);
-  
-    if (oldListName !== task.list && oldList) {
+
+    if (oldList && oldListName !== task.list) {
         oldList.tasks = oldList.tasks.filter(t => t !== task);
-    }
-  
-    if (!oldList.tasks.includes(task) && newList) {
-        newList.tasks.push(task);
-    }
-  
-    renderTaskList(newList.tasks);
-  
-    if (oldListName !== task.list) {
         renderTaskList(oldList.tasks);
     }
+
+    if (newList && (!oldList || !oldList.tasks.includes(task))) {
+        newList.tasks.push(task);
+        renderTaskList(newList.tasks);
+    }
+  
     saveData(getAllLists()); 
 }
