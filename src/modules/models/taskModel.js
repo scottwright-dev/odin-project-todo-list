@@ -39,13 +39,16 @@ export function updateTaskDetails(task) {
 
     if (oldList && oldListName !== task.list) {
         oldList.tasks = oldList.tasks.filter(t => t !== task);
-        renderTaskList(oldList.tasks);
     }
 
     if (newList && (!oldList || !oldList.tasks.includes(task))) {
         newList.tasks.push(task);
-        renderTaskList(newList.tasks);
     }
-  
+
+    const currentListTitle = document.querySelector('.list-title-text').textContent;
+    if (currentListTitle === oldListName) {
+        renderTaskList(oldList.tasks);
+    }
+
     saveData(getAllLists()); 
 }
