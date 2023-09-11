@@ -1,13 +1,13 @@
 # To Do App #
 
 <p align="center">
-  <a href="https://github.com/scottwright-dev/odin-project-todo-list">
+  <a href="https://scottwright-dev.github.io/odin-project-todo-list/">
     <img src="src/assets/img/todo-app-mockup.png" alt="To Do App">
   </a>
 </p>
   
 <p align="center">
-  <a href="https://github.com/scottwright-dev/odin-project-todo-list">Click here for demo</a>
+  <a href="https://scottwright-dev.github.io/odin-project-todo-list/">Click here for demo</a>
 </p>
 
 
